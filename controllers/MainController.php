@@ -47,7 +47,7 @@ class MainController {
 
 	private function render($route) {
 
-		$notifications = [];
+		$params = [];
 
 		$user = $this->_session->get('user');
 		if ($this->_config['routes'][$route]['auth'] && !$user)
@@ -58,7 +58,7 @@ class MainController {
 				$products = $this->_db->getProducts();
 				break;
 			case 'produit':
-				$notifications = $this->product();
+				$params = $this->product();
 				break;
 			case 'connexion':
 				if ($this->_session->get('user'))
@@ -69,15 +69,15 @@ class MainController {
 					$formAction = $_POST['action'];
 					switch ($formAction) {
 						case 'signin':
-							$notifications = $this->signin();
+							$params = $this->signin();
 							break;
 						case 'signup':
-							$notifications = $this->signup();
-							$formAction = isset($notifications['action']) ? $notifications['action'] : $formAction;
+							$params = $this->signup();
+							$formAction = isset($params['notifications']['action']) ? $params['notifications']['action'] : $formAction;
 							break;
 						case 'forgot':
-							$notifications = $this->forgot();
-							$formAction = isset($notifications['action']) ? $notifications['action'] : $formAction;
+							$params = $this->forgot();
+							$formAction = isset($params['notifications']['action']) ? $params['notifications']['action'] : $formAction;
 							break;
 						
 						default:
@@ -112,6 +112,9 @@ class MainController {
 	}
 
 	private function signin() {
+
+		$params = [];
+
 		$user = new User($this->_dbConn);
 		$res = $user->findBy('username', $_POST['username']);
 		if (isset($res['id'])) {
@@ -125,23 +128,25 @@ class MainController {
 					$this->_session->set('user', $res);
 					$this->goHome();
 				} else {
-					return [
+					$params['notifications'] = [
 							'status' => 'error',
 							'msg' => 'L‘identifiant ou le mot de passe saisis sont invalide. Veuillez réessayer',
 						];
 				}
 			} else {
-				return [
+				$params['notifications'] = [
 						'status' => 'error',
 						'msg' => 'Votre compte n‘est pas encore activé. Veuillez patienter',
 					];
 			}
 		} else {
-			return [
+			$params['notifications'] = [
 					'status' => 'error',
 					'msg' => 'L‘identifiant ou le mot de passe saisis sont invalide. Veuillez réessayer',
 				];
 		}
+
+		return $params;
 	}
 
 	private function signup() {
@@ -168,12 +173,12 @@ class MainController {
 				if (!$mail) {
 					$sentMail = false;
 				}
-				return $sentMail ? $userSaved : [
+				$params['notifications'] = $sentMail ? $userSaved : [
 						'status' => 'error',
 						'msg' => 'Un problème est survenue lors de l‘enregistrement de la demande. Veuillez contacter l‘administrateur du site',
 					];
 			} else {
-				return [
+				$params['notifications'] = [
 						'status' => 'error',
 						'msg' => 'Un problème est survenue lors de l‘enregistrement de la demande. Veuillez contacter l‘administrateur du site',
 					];
@@ -203,7 +208,7 @@ class MainController {
 			}
 		}
 
-		return $sentMail ? [
+		$params['notifications'] = $sentMail ? [
 					'status' => 'success',
 					'msg' => 'Si l‘email saisi correspond à un compte, vous recevrez un email avec votre nouveau mot de passe',
 					'action' => 'signin',
@@ -211,30 +216,43 @@ class MainController {
 					'status' => 'error',
 					'msg' => 'Impossible d‘envoyer l‘email. Veuillez contacter l‘administrateur du site',
 				];
+
+		return $params;
 	}
 
 	private function product() {
 
-		if (!empty($_POST)) {
+		$params = [];
+		$product = new Product($this->_dbConn);
+		
+		if (isset($_GET['id'])) {
+			$params['currentProduct'] = $product->findBy('id', $_GET['id']);
+		}
 
-			$product = new Product($this->_dbConn);
+		if (!empty($_POST)) {
+			$params['currentProduct'] = $_POST;
 			$res = $product->findBy('reference', $_POST['reference']);
-			if (isset($res['reference'])) {
-				return [
+			if (isset($res['id']) && $res['id'] != $_POST['id']) {
+				$params['notifications'] = [
 						'status' => 'error',
 						'msg' => 'La référence saisie est déjà utilisée',
 					];
 			} else {
-				if ($productSaved = $product->save($_POST)) {
-					return $productSaved;
+				if ($params['notifications'] = $product->save($_POST)) {
+					if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
+						header('location:'.Helper::getUrl('produit', ['id' => $params['notifications']['id']]));
+						exit(0);
+					}
 				} else {
-					return [
+					$params['notifications'] = [
 							'status' => 'error',
 							'msg' => 'Un problème est survenue lors de l‘enregistrement de la demande. Veuillez contacter l‘administrateur du site',
 						];
 				}
 			}
 		}
+
+		return $params;
 	}
 }
 

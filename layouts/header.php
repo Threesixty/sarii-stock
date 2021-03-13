@@ -28,8 +28,8 @@ require_once('components/Helper.php'); ?>
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 
 		<?php
-		if (!empty($notifications)) { ?>
-			<span class="notification" data-status="<?= $notifications['status'] ?>" data-msg="<?= $notifications['msg'] ?>"></span>
+		if (!empty($params['notifications'])) { ?>
+			<span class="notification" data-status="<?= $params['notifications']['status'] ?>" data-msg="<?= $params['notifications']['msg'] ?>"></span>
 		<?php } ?>
 		<!--begin::Main-->
 		<!--begin::Header Mobile-->

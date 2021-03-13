@@ -86142,7 +86142,8 @@ span.logo {
 	font-weight: 900;
 	font-size: 40px;
 }
-pre {
+.debug {
+  z-index: 9999;
 	position: absolute;
 	background: #fff;
 }

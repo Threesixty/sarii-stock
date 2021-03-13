@@ -22,7 +22,7 @@ var KTProjectsAdd = function () {
 				return; // Skip if stepped back
 			}
 
-			if (wizard.getStep() == 3) {
+			if (wizard.getStep() != 4) {
 				$('.product-name').html($('input[name="name"]').val());
 				$('.product-description').html($('textarea[name="description"]').val());
 				$('.product-category').html($('select[name="category_id"]').val());

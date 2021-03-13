@@ -6,9 +6,9 @@ require_once('components/PHPMailer/src/SMTP.php');
 class Helper {
 
     public static function pp($mixed) {
-    	echo '<pre>';
+    	echo '<pre class="debug"><code>';
     	var_dump($mixed);
-    	echo '</pre>';
+    	echo '</code></pre>';
 
 	}
 

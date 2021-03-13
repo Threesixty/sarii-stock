@@ -2,6 +2,8 @@
 require_once('components/Widget.php');
 require_once('components/Helper.php');
 
+$currentProduct = isset($params['currentProduct']) ? $params['currentProduct'] : null;
+
 $title = 'Ajouter un produit'; ?>
 
 	<!--begin::Content-->
@@ -142,6 +144,12 @@ $title = 'Ajouter un produit'; ?>
 								<div class="col-xl-12 col-xxl-7">
 									<!--begin::Form Wizard-->
 									<form class="form" id="kt_projects_add_form" method="post">
+										<?php
+										if (isset($_GET['id'])) { ?>
+											<input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+										<?php } ?>
+										<input type="hidden" name="status" value="<?= isset($currentProduct['status']) ? $currentProduct['status'] : 0 ?>">
+
 										<!--begin::Step 1-->
 										<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 											<h3 class="mb-10 font-weight-bold text-dark text-uppercase">Désignation :</h3>
@@ -150,13 +158,13 @@ $title = 'Ajouter un produit'; ?>
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 col-form-label">Nom du produit *</label>
 														<div class="col-lg-9 col-xl-9">
-															<input class="form-control form-control-lg form-control-solid" name="name" type="text" value="" />
+															<input class="form-control form-control-lg form-control-solid" name="name" type="text" value="<?= isset($currentProduct['name']) ? $currentProduct['name'] : '' ?>" />
 														</div>
 													</div>
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 col-form-label">Description</label>
 														<div class="col-lg-9 col-xl-9">
-															<textarea class="form-control form-control-lg form-control-solid" id="kt_autosize_1" rows="3" name="description"></textarea>
+															<textarea class="form-control form-control-lg form-control-solid" id="kt_autosize_1" rows="3" name="description"><?= isset($currentProduct['name']) ? $currentProduct['description'] : '' ?></textarea>
 														</div>
 													</div>
 												</div>
@@ -177,14 +185,14 @@ $title = 'Ajouter un produit'; ?>
 														<div class="col-lg-9 col-xl-9">
 															<select class="form-control form-control-lg form-control-solid" id="kt_select2_1" name="category_id">
 																<option value=""></option>
-																<option value="1">Catégorie 1</option>
+																<option value="1" <?= isset($currentProduct['category_id']) && $currentProduct['category_id'] == 1 ? 'selected' : '' ?>>Catégorie 1</option>
 															</select>
 														</div>
 													</div>
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 col-form-label">Référence *</label>
 														<div class="col-lg-9 col-xl-9">
-															<input class="form-control form-control-lg form-control-solid" name="reference" type="text" value="" />
+															<input class="form-control form-control-lg form-control-solid" name="reference" type="text" value="<?= isset($currentProduct['reference']) ? $currentProduct['reference'] : '' ?>" />
 														</div>
 													</div>
 												</div>
@@ -203,13 +211,13 @@ $title = 'Ajouter un produit'; ?>
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 col-form-label">Stock actuel *</label>
 														<div class="col-lg-9 col-xl-9">
-															<input class="form-control form-control-lg form-control-solid" name="stock" type="text" value="" />
+															<input class="form-control form-control-lg form-control-solid" name="stock" type="text" value="<?= isset($currentProduct['stock']) ? $currentProduct['stock'] : '' ?>" />
 														</div>
 													</div>
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 col-form-label">Alerte stock mini *</label>
 														<div class="col-lg-9 col-xl-9">
-															<input class="form-control form-control-lg form-control-solid" name="stock_mini" type="text" value="" />
+															<input class="form-control form-control-lg form-control-solid" name="stock_mini" type="text" value="<?= isset($currentProduct['stock_mini']) ? $currentProduct['stock_mini'] : '' ?>" />
 														</div>
 													</div>
 												</div>

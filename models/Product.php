@@ -39,12 +39,14 @@ class Product {
 
     public function save($product) {
 
+    	$action = false;
     	if (isset($product['id'])) {
 
-			$sql = 'UPDATE product SET name = "'.$product['name'].', description = "'.$product['description'].'", reference = "'.$product['reference'].'", category_id = "'.$product['category_id'].'", stock = "'.$product['stock'].'", stock_mini = "'.$product['stock_mini'].'", status = "'.$product['status'].'" WHERE id = '.$product['id'];
+			$sql = 'UPDATE product SET name = "'.$product['name'].'", description = "'.$product['description'].'", reference = "'.$product['reference'].'", category_id = "'.$product['category_id'].'", stock = "'.$product['stock'].'", stock_mini = "'.$product['stock_mini'].'", status = "'.$product['status'].'" WHERE id = '.$product['id'];
     	} else {
 
-			$sql = 'INSERT INTO user (name, description, reference, category_id, stock, stock_mini, status, created_at) VALUES ("'.$product['name'].'", "'.$product['description'].'", "'.$product['reference'].'", "'.$product['category_id'].'", "'.$product['stock'].'", "'.$product['stock_mini'].'", 1, "'.time().'")';
+    		$action = 'redirect';
+			$sql = 'INSERT INTO product (name, description, reference, category_id, stock, stock_mini, status, created_at) VALUES ("'.$product['name'].'", "'.$product['description'].'", "'.$product['reference'].'", "'.$product['category_id'].'", "'.$product['stock'].'", "'.$product['stock_mini'].'", 1, "'.time().'")';
     	}
 
 		try {
@@ -53,7 +55,8 @@ class Product {
 			return $res ? [
 						'status' => 'success',
 						'msg' => 'Le produit a bien été enregistré.',
-						'action' => 'signin',
+						'action' => $action,
+						'id' => $action ? $this->_conn->lastInsertId() : false,
 					] : [
 						'status' => 'error',
 						'msg' => 'Une erreur s‘est produite lors de l‘enregistrement du produit. Veuillez contacter l‘administrateur du site',
