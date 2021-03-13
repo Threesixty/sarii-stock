@@ -220,6 +220,23 @@ $title = 'Ajouter un produit'; ?>
 															<input class="form-control form-control-lg form-control-solid" name="stock_mini" type="text" value="<?= isset($currentProduct['stock_mini']) ? $currentProduct['stock_mini'] : '' ?>" />
 														</div>
 													</div>
+													<div class="form-group row">
+														<div class="col-lg-9 col-xl-6">
+															<h3 class="mt-10 mb-10 font-weight-bold text-dark text-uppercase">Statut du produit</h3>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 col-form-label">Activer le produit ?</label>
+														<div class="col-lg-9 col-xl-9">
+															<span class="switch switch-lg switch-icon">
+																<label>
+																	<input type="hidden" name="status" value="0" />
+																	<input type="checkbox" name="status" value="1" <?= $currentProduct['status'] == '1' ? 'checked' : '' ?>>
+																	<span></span>
+																</label>
+															</span>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -260,6 +277,13 @@ $title = 'Ajouter un produit'; ?>
 												<tr>
 													<td class="font-weight-bold text-muted">Alerte stock mini :</td>
 													<td class="font-weight-bold text-right product-stock-mini"></td>
+												</tr>
+											</table>
+											<h6 class="font-weight-bold text-uppercase my-3">Statut du produit :</h6>
+											<table class="w-100">
+												<tr>
+													<td class="font-weight-bold text-muted">Activé :</td>
+													<td class="font-weight-bold text-right product-status"></td>
 												</tr>
 											</table>
 										</div>

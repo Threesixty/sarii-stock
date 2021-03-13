@@ -65012,12 +65012,6 @@ code {
   border-top: 0;
   border-bottom: 1px solid #EBEDF3;
 }
-.table.table-separate th:first-child, .table.table-separate td:first-child {
-  padding-left: 0 !important;
-}
-.table.table-separate th:last-child, .table.table-separate td:last-child {
-  padding-right: 0 !important;
-}
 .table.table-separate tfoot th, .table.table-separate tfoot td {
   border-bottom: 0;
   border-top: 1px solid #EBEDF3;
@@ -86160,3 +86154,5 @@ span.select2 {
 	color: #FFFFFF;
 	background-color: #3699FF;
 }
+
+

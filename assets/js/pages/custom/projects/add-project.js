@@ -29,6 +29,8 @@ var KTProjectsAdd = function () {
 				$('.product-reference').html($('input[name="reference"]').val());
 				$('.product-stock').html($('input[name="stock"]').val());
 				$('.product-stock-mini').html($('input[name="stock_mini"]').val());
+				var status = $('input[name="status"]').is(':checked') ? 'Oui' : 'Non';
+				$('.product-status').html(status);
 			}
 
 			// Validate form before change wizard step

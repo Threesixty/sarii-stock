@@ -55,10 +55,12 @@ class MainController {
 
 		switch ($route) {
 			case 'index':
-				$products = $this->_db->getProducts();
 				break;
 			case 'produit':
 				$params = $this->product();
+				break;
+			case 'produits':
+				$params = ['products' => $this->_db->getProducts()];
 				break;
 			case 'connexion':
 				if ($this->_session->get('user'))
