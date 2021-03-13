@@ -54,7 +54,7 @@ class Product {
 
 			return $res ? [
 						'status' => 'success',
-						'msg' => 'Le produit a bien été enregistré.',
+						'msg' => 'Le produit a bien été sauvegardé.',
 						'action' => $action,
 						'id' => $action ? $this->_conn->lastInsertId() : false,
 					] : [

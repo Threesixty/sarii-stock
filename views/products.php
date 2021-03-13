@@ -30,7 +30,7 @@ $title = 'Liste des produits'; ?>
 					</div>
 					<div class="card-body">
 						<!--begin: Datatable-->
-						<table class="table table-separate table-head-custom table-checkable" id="kt_datatable_product">
+						<table class="table table-separate table-head-custom table-checkable table-responsive" id="kt_datatable_product">
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -45,54 +45,6 @@ $title = 'Liste des produits'; ?>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td><a href="<?= Helper::getUrl('produit', ['id' => 1]) ?>">AMSTRAD CPC 464</a></td>
-									<td>3349509387462</td>
-									<td>Actionneurs</td>
-									<td><span class="label label-xl font-weight-boldest label-light-danger label-inline h4">20</span></td>
-									<td>10</td>
-									<td><span class="label label-lg font-weight-bold label-light-success label-inline">Actif</span></td>
-									<td data-order="123456789">16 février 2021</td>
-									<td nowrap="nowrap">
-										<div class="dropdown dropdown-inline" data-toggle="tooltip" data-theme="dark" data-placement="left" title="Actions sur le stock">
-											<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
-				                                <i class="fas fa-shipping-fast"></i>
-				                            </a>
-										  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-												<ul class="nav nav-hoverable flex-column">
-										    		<li class="nav-item">
-										    			<a class="nav-link" href="#">
-										    				<i class="nav-icon fas fa-plus"></i>
-										    				<span class="nav-text">Réapprovisionner</span>
-										    			</a>
-										    		</li>
-										    		<li class="nav-item">
-										    			<a class="nav-link" href="#">
-										    				<i class="nav-icon fas fa-share"></i>
-										    				<span class="nav-text">Expédier</span>
-										    			</a>
-										    		</li>
-										    		<li>
-										    			<hr style="margin: 0; border-color: #eee;">
-										    		</li>
-										    		<li class="nav-item">
-										    			<a class="nav-link" href="#">
-										    				<i class="nav-icon fas la-list"></i>
-										    				<span class="nav-text">Historique</span>
-										    			</a>
-										    		</li>
-												</ul>
-										  	</div>
-										</div>
-										<a href="<?= Helper::getUrl('produit', ['id' => 1]) ?>" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" title="Éditer">
-											<i class="icon-xl la la-edit"></i>
-										</a>
-										<a href="<?= Helper::getUrl('produits', ['del' => 1]) ?>" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" data-placement="right" title="Supprimer">
-											<i class="icon-xl la la-trash"></i>
-										</a>
-									</td>
-								</tr>
 								<tr>
 									<td>1</td>
 									<td><a href="<?= Helper::getUrl('produit', ['id' => 1]) ?>">plop</a></td>

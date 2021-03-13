@@ -166,8 +166,10 @@ var KTProjectsAdd = function () {
 			_wizardEl = KTUtil.getById('kt_projects_add');
 			_formEl = KTUtil.getById('kt_projects_add_form');
 
-			_initWizard();
-			_initValidation();
+			if ($('#kt_projects_add').length)
+				_initWizard();
+			if ($('#kt_projects_add_form').length)
+				_initValidation();
 		}
 	};
 }();

@@ -47,17 +47,17 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="login login-5 d-flex flex-row-fluid login-<?= $formAction ?>-on" id="kt_login">
 				<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid bg-mobile" style="background-image: url(assets/media/bg/bg-2.jpg);">
 					<div class="login-form text-center text-white p-7 position-relative overflow-hidden">
-						<!--begin::Login Header-->
-						<div class="d-flex flex-center mb-5">
-							<img src="assets/media/logos/sarii-stock.png" class="max-h-150px" alt="" />
-						</div>
-						<div class="d-flex flex-center mb-15">
-							<span class="logo logo-big">{SARII-Stock}</span>
-						</div>
-						<!--end::Login Header-->
 						<!--begin::Login Sign in form-->
 						<div class="login-signin">
 							<form class="form" id="kt_login_signin_form" method="post">
+								<!--begin::Login Header-->
+								<div class="d-flex flex-center mb-5">
+									<img src="assets/media/logos/sarii-stock.png" class="max-h-150px" alt="" />
+								</div>
+								<div class="d-flex flex-center mb-15">
+									<span class="logo logo-big">{SARII-Stock}</span>
+								</div>
+								<!--end::Login Header-->
 								<input type="hidden" name="action" value="signin">
 								<div class="form-group">
 									<input class="form-control h-auto text-white bg-white-o-10 rounded-pill border-0 py-4 px-8" type="text" placeholder="Identifiant" name="username" autocomplete="off" />
@@ -71,16 +71,23 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="form-group text-center mt-10">
 									<button type="submit" id="kt_login_signin_submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Connexion</button>
 								</div>
+								<div class="mt-10">
+									<span class="opacity-40 mr-4">Pas de compte ?</span>
+									<a href="javascript:;" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Demandez un accès</a>
+								</div>
 							</form>
-							<div class="mt-10">
-								<span class="opacity-40 mr-4">Pas de compte ?</span>
-								<a href="javascript:;" id="kt_login_signup" class="text-white opacity-30 font-weight-normal">Demandez un accès</a>
-							</div>
 						</div>
 						<!--end::Login Sign in form-->
 						<!--begin::Login Sign up form-->
 						<div class="login-signup">
 							<form class="form" id="kt_login_signup_form" method="post">
+								<div class="d-flex flex-center mb-5">
+									<img src="assets/media/logos/sarii-stock.png" class="max-h-150px" alt="" />
+								</div>
+								<div class="d-flex flex-center mb-15">
+									<span class="logo logo-big">{SARII-Stock}</span>
+								</div>
+								<!--end::Login Header-->
 								<input type="hidden" name="action" value="signup">
 								<div class="form-group">
 									<input class="form-control h-auto text-white bg-white-o-10 rounded-pill border-0 py-4 px-8" type="text" placeholder="Prénom *" name="firstname" />
@@ -118,10 +125,17 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--end::Login Sign up form-->
 						<!--begin::Login forgot password form-->
 						<div class="login-forgot">
-							<div class="mb-5">
-								<p class="opacity-40">Veuillez saisir votre adresse email</p>
-							</div>
 							<form class="form" id="kt_login_forgot_form" method="post">
+								<div class="d-flex flex-center mb-5">
+									<img src="assets/media/logos/sarii-stock.png" class="max-h-150px" alt="" />
+								</div>
+								<div class="d-flex flex-center mb-15">
+									<span class="logo logo-big">{SARII-Stock}</span>
+								</div>
+								<div class="mb-5">
+									<p class="opacity-40">Veuillez saisir votre adresse email</p>
+								</div>
+								<!--end::Login Header-->
 								<input type="hidden" name="action" value="forgot">
 								<div class="form-group mb-10">
 									<input class="form-control h-auto text-white bg-white-o-10 rounded-pill border-0 py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
