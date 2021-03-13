@@ -60,7 +60,7 @@ class MainController {
 				$params = $this->product();
 				break;
 			case 'produits':
-				$params = ['products' => $this->_db->getProducts()];
+				$params = $this->products();
 				break;
 			case 'connexion':
 				if ($this->_session->get('user'))
@@ -222,6 +222,19 @@ class MainController {
 		return $params;
 	}
 
+	private function products() {
+
+		$product = new Product($this->_dbConn);
+		if (isset($_GET['del'])) {
+
+			$params['notifications'] = $product->delete($_GET['del']);
+		}
+
+		$params['products'] = $product->getProducts();
+
+		return $params;
+	}
+
 	private function product() {
 
 		$params = [];
@@ -229,6 +242,12 @@ class MainController {
 		
 		if (isset($_GET['id'])) {
 			$params['currentProduct'] = $product->findBy('id', $_GET['id']);
+			if (isset($_GET['status'])) {
+				$params['notifications'] = [
+						'status' => 'success',
+						'msg' => 'Le produit a bien été sauvegardé',
+					];
+			}
 		}
 
 		if (!empty($_POST)) {
@@ -242,7 +261,7 @@ class MainController {
 			} else {
 				if ($params['notifications'] = $product->save($_POST)) {
 					if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
-						header('location:'.Helper::getUrl('produit', ['id' => $params['notifications']['id']]));
+						header('location:'.Helper::getUrl('produit', ['id' => $params['notifications']['id'], 'status' => 'new']));
 						exit(0);
 					}
 				} else {

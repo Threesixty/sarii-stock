@@ -1,4 +1,6 @@
 <?php
+setlocale(LC_TIME, 'fr_FR'); 
+setlocale(LC_ALL, 'fr_FR.utf8');
 
 $config = [
 	'db' => [

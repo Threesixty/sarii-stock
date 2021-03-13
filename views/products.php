@@ -19,8 +19,6 @@ $title = 'Liste des produits'; ?>
 				<div class="card card-custom">
 					<div class="card-header flex-wrap py-5">
 						<div class="card-title">
-							<h3 class="card-label">Multiple Controls
-							<span class="text-muted pt-2 font-size-sm d-block">multiple controls examples</span></h3>
 						</div>
 						<div class="card-toolbar">
 							<!--begin::Button-->

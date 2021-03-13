@@ -37,6 +37,46 @@ class Product {
 		}
 	}
 
+	public function getProducts() {
+
+		$sql = 'SELECT * FROM product ORDER BY id ASC';
+
+		try {
+			$res = $this->_conn->query($sql);
+
+			return $res->fetchAll(PDO::FETCH_ASSOC);
+
+		} catch(PDOException $e) {
+			return [
+					'status' => 'error',
+					'msg' => $e->getMessage()
+				];
+		}
+	}
+
+	public function delete($productId) {
+
+		$sql = 'DELETE FROM product WHERE id = '.intval($productId);
+
+		try {
+			$res = $this->_conn->query($sql);
+
+			return $res ? [
+						'status' => 'success',
+						'msg' => 'Le produit a bien été supprimé.',
+					] : [
+						'status' => 'error',
+						'msg' => 'Une erreur s‘est produite lors de l‘enregistrement du produit. Veuillez contacter l‘administrateur du site',
+					];
+
+		} catch(PDOException $e) {
+			return [
+					'status' => 'error',
+					'msg' => $e->getMessage()
+				];
+		}
+	}
+
     public function save($product) {
 
     	$status = isset($_POST['status']) && $_POST['status'] == 1 ? 1 : 0;

@@ -29,35 +29,7 @@ class Database {
 		}
 
 	}
-
-	public function getProducts() {
-
-		$sql = 'SELECT * FROM product ORDER BY id ASC';
-
-		try {
-			$res = $this->_conn->query($sql);
-
-			return $res->fetchAll(PDO::FETCH_ASSOC);
-
-		} catch(PDOException $e) {
-			return ['error' => $e->getMessage()];
-		}
-	}
-
-	public function getProduct($id) {
-
-		$sql = 'SELECT * FROM product WHERE id = '.$id;
-
-		try {
-			$res = $this->_conn->query($sql);
-
-			return $res->fetch(PDO::FETCH_ASSOC);
-
-		} catch(PDOException $e) {
-			return ['error' => $e->getMessage()];
-		}
-	}
-
+	
 	public function getUsers() {
 
 		$sql = 'SELECT * FROM user ORDER BY id ASC';
