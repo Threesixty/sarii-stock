@@ -164,9 +164,9 @@ var KTApp = function() {
 
 
     var initQuickUserToggleTrigger = function() {
-    	$('#kt_quick_user_toggle_trigger').on('click', function(){
-    		$('#kt_quick_user_toggle').trigger('click');
-    	});
+        $('#kt_quick_user_toggle_trigger').on('click', function(){
+            $('#kt_quick_user_toggle').trigger('click');
+        });
     };
 
     var initSwalNotifications = function() {
@@ -183,6 +183,17 @@ var KTApp = function() {
 				}
             });
         };
+    };
+
+    var initModalStock = function() {
+
+        $('.update-modal-inc').on('click', function() {
+            $('#modalIncStock').find('input[name="product_id"]').val($(this).closest('ul').data('id'));
+        }); 
+
+        $('.update-modal-dec').on('click', function() {
+            $('#modalDecStock').find('input[name="product_id"]').val($(this).closest('ul').data('id'));
+        }); 
     }
 
     return {
@@ -205,6 +216,7 @@ var KTApp = function() {
             initAbsoluteDropdowns();
             initQuickUserToggleTrigger();
             initSwalNotifications();
+            initModalStock();
         },
 
         initTooltips: function() {

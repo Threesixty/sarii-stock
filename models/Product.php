@@ -77,7 +77,7 @@ class Product {
 		}
 	}
 
-    public function save($product) {
+    public function save($product, $type = null) {
 
     	$status = isset($_POST['status']) && $_POST['status'] == 1 ? 1 : 0;
 
@@ -93,9 +93,18 @@ class Product {
 		try {
 			$res = $this->_conn->query($sql);
 
+			$msg = 'Le produit a bien été sauvegardé.';
+			switch ($type) {
+				case 'stock':
+					$msg = 'Le stock a bien été mis à jour.';
+					break;
+				
+				default:
+					break;
+			}
 			return $res ? [
 						'status' => 'success',
-						'msg' => 'Le produit a bien été sauvegardé.',
+						'msg' => $msg,
 						'action' => $action,
 						'id' => $action ? $this->_conn->lastInsertId() : false,
 					] : [

@@ -35,7 +35,7 @@ require_once('components/Helper.php'); ?>
 		<!--begin::Header Mobile-->
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
-			<a href="index.html">
+			<a href="<?= Helper::getUrl('index') ?>">
 				<span class="logo">{SARII-Stock}</span>
 			</a>
 			<!--end::Logo-->
@@ -73,7 +73,7 @@ require_once('components/Helper.php'); ?>
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="index.html" class="brand-logo">
+						<a href="<?= Helper::getUrl('index') ?>" class="brand-logo">
 							<span class="logo">{SARII-Stock}</span>
 						</a>
 						<!--end::Logo-->

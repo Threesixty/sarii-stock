@@ -73,13 +73,13 @@ $title = 'Liste des produits'; ?>
 												  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
 														<ul class="nav nav-hoverable flex-column" data-id="<?= $product->id ?>">
 												    		<li class="nav-item">
-												    			<a class="nav-link" href="#">
+												    			<a class="nav-link update-modal-inc" href="#" data-toggle="modal" data-target="#modalIncStock">
 												    				<i class="nav-icon fas fa-plus"></i>
 												    				<span class="nav-text">Réapprovisionner</span>
 												    			</a>
 												    		</li>
 												    		<li class="nav-item">
-												    			<a class="nav-link" href="#">
+												    			<a class="nav-link update-modal-dec" href="#" data-toggle="modal" data-target="#modalDecStock">
 												    				<i class="nav-icon fas fa-share"></i>
 												    				<span class="nav-text">Expédier</span>
 												    			</a>
@@ -88,7 +88,7 @@ $title = 'Liste des produits'; ?>
 												    			<hr style="margin: 0; border-color: #eee;">
 												    		</li>
 												    		<li class="nav-item">
-												    			<a class="nav-link" href="#">
+												    			<a id="kt_quick_panel_toggle" class="nav-link" href="#">
 												    				<i class="nav-icon fas la-list"></i>
 												    				<span class="nav-text">Historique</span>
 												    			</a>

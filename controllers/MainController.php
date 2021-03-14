@@ -230,6 +230,34 @@ class MainController {
 			$params['notifications'] = $product->delete($_GET['del']);
 		}
 
+
+		if (!empty($_POST)) {
+			$currentProduct = $product->findBy('id', $_POST['product_id']);
+			if (isset($_POST['inc_stock'])) {
+				$currentProduct['stock'] += $_POST['inc_stock'];
+			}
+			if (isset($_POST['dec_stock'])) {
+				if ($_POST['dec_stock'] <= $currentProduct['stock'])
+					$currentProduct['stock'] -= $_POST['dec_stock'];
+				else {
+					$params['notifications'] = [
+							'status' => 'error',
+							'msg' => 'Vous ne pouvez pas expédier une quantité de produits plus élevée ('.$_POST['dec_stock'].') que la quantité totale disponible ('.$currentProduct['stock'].').',
+						];
+				}
+			}
+
+			if (!isset($params['notifications'])) {
+				if ($params['notifications'] = $product->save($currentProduct, 'stock')) {
+				} else {
+					$params['notifications'] = [
+							'status' => 'error',
+							'msg' => 'Un problème est survenue lors de l‘enregistrement de la demande. Veuillez contacter l‘administrateur du site.',
+						];
+				}
+			}
+		}
+
 		$params['products'] = $product->getProducts();
 
 		return $params;
