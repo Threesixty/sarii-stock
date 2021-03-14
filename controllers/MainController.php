@@ -5,6 +5,7 @@ require_once('components/Configuration.php');
 require_once('components/Helper.php');
 require_once('models/User.php');
 require_once('models/Product.php');
+require_once('models/History.php');
 
 class MainController {
 
@@ -61,6 +62,10 @@ class MainController {
 				break;
 			case 'produits':
 				$params = $this->products();
+				break;
+			case 'historique':
+				echo $this->getProductHistory();
+				exit(0);
 				break;
 			case 'connexion':
 				if ($this->_session->get('user'))
@@ -224,6 +229,8 @@ class MainController {
 
 	private function products() {
 
+		$params = [];
+
 		$product = new Product($this->_dbConn);
 		if (isset($_GET['del'])) {
 
@@ -233,13 +240,19 @@ class MainController {
 
 		if (!empty($_POST)) {
 			$currentProduct = $product->findBy('id', $_POST['product_id']);
+
+			$operation = [];
 			if (isset($_POST['inc_stock'])) {
+				$operation['type'] = 'inc';
+				$operation['value'] = $_POST['inc_stock'];
 				$currentProduct['stock'] += $_POST['inc_stock'];
 			}
 			if (isset($_POST['dec_stock'])) {
-				if ($_POST['dec_stock'] <= $currentProduct['stock'])
+				if ($_POST['dec_stock'] <= $currentProduct['stock']) {
+					$operation['type'] = 'dec';
+					$operation['value'] = $_POST['dec_stock'];
 					$currentProduct['stock'] -= $_POST['dec_stock'];
-				else {
+				} else {
 					$params['notifications'] = [
 							'status' => 'error',
 							'msg' => 'Vous ne pouvez pas expédier une quantité de produits plus élevée ('.$_POST['dec_stock'].') que la quantité totale disponible ('.$currentProduct['stock'].').',
@@ -248,7 +261,11 @@ class MainController {
 			}
 
 			if (!isset($params['notifications'])) {
-				if ($params['notifications'] = $product->save($currentProduct, 'stock')) {
+				if ($params['notifications'] = $product->save($currentProduct, $operation['type'])) {
+
+					$history = new History($this->_dbConn);
+					$params['notifications2'] = $history->save($_POST['product_id'], $this->_session->get('user')['id'], $operation['type'], $operation['value']);
+
 				} else {
 					$params['notifications'] = [
 							'status' => 'error',
@@ -261,6 +278,22 @@ class MainController {
 		$params['products'] = $product->getProducts();
 
 		return $params;
+	}
+
+	private function getProductHistory() {
+		if (isset($_GET['productId'])) {
+			
+			$history = new History($this->_dbConn);
+			$productHistory = $history->findBy('id_product', $_GET['productId'], false);
+			if (null !== $productHistory) {
+				$user = new User($this->_dbConn);
+				foreach ($productHistory as $key => $history) {
+					$productHistory[$key]['user'] = $user->findBy('id', $history['id_user']);
+				}
+			}
+
+			return json_encode($productHistory);
+		}
 	}
 
 	private function product() {

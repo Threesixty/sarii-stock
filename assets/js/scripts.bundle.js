@@ -171,18 +171,23 @@ var KTApp = function() {
 
     var initSwalNotifications = function() {
 
+    	var notifications = [];
         if ($('.notification').length) {
+        	$('.notification').each(function() {
 
-			swal.fire({
-                text: $('.notification').data('msg'),
-                icon: $('.notification').data('status'),
-                buttonsStyling: false,
-                confirmButtonText: "Ok",
-                customClass: {
-					confirmButton: "btn font-weight-bold btn-light-primary"
-				}
-            });
-        };
+				notifications.push({
+	                text: $(this).data('msg'),
+	                icon: $(this).data('status'),
+	                buttonsStyling: false,
+	                confirmButtonText: "Ok",
+	                customClass: {
+						confirmButton: "btn font-weight-bold btn-light-primary"
+					}
+	            });
+	        });
+	    }
+	    swal.queue(notifications);
+
     };
 
     var initModalStock = function() {
@@ -201,6 +206,91 @@ var KTApp = function() {
         $('.update-modal-dec').on('click', function() {
             $('#modalDecStock').find('input[name="product_id"]').val($(this).closest('ul').data('id'));
         }); 
+    };
+
+    var initShowHistory = function() {
+
+    	$('.kt_quick_panel_toggle').on('click', function() {
+
+            $('#kt_quick_panel_toggle').trigger('click');
+
+	        $.ajax({
+				url : $(this).closest('ul').data('url'),
+				type: 'GET',
+				contentType: 'application/x-www-form-urlencoded;charset=utf8',
+				data : {
+					productId: $(this).closest('ul').data('id'),
+				},
+				success: function(res){
+
+					var histories = JSON.parse(res);
+
+					if (histories.length) {
+
+						$('#kt_quick_panel').find('.navi-item').each(function() {
+							if (!$(this).hasClass('d-none'))
+								$(this).remove();
+						});
+						for (var idx = 0; idx < histories.length; idx++) {
+
+							var currentHistory = histories[idx];
+
+							var style = 'success',
+								icon = 'plus',
+								sign = '+';
+							if (currentHistory['operation'] == 'dec') {
+								style = 'info',
+								icon = 'minus',
+								sign = '+';
+							}
+
+							var operation = currentHistory['operation'] == 'inc' ? 'Approvisionnement ' : 'Expédition ';
+							var title = '<span class="text-' + style + ' text-uppercase">' + operation + '</span><hr class="my-1">';
+							var count = 'Le ' + getDateFormat(currentHistory['created_at'] * 1000);
+							var subtitle = '<small class="d-block">Par ' + currentHistory['user']['firstname'] + ' ' + currentHistory['user']['lastname'] + '</small>';
+
+							var clone = $('#kt_quick_panel').find('.navi-item.d-none').clone();
+							clone.find('.symbol-label span.text-center').addClass('text-' + style).html(sign + currentHistory['value']);
+							clone.find('.title').html(title);
+							clone.find('.count').html(count);
+							clone.find('.subtitle').html(subtitle);
+							clone.removeClass('d-none');
+							$('#kt_quick_panel .offcanvas-content .navi').append(clone);
+						}
+					}
+				},
+				error: function(){
+					alert('An error occured, please contact support.');
+				}
+	        });
+    	});
+
+    	function getDateFormat(date) {
+
+			var d = new Date(date),
+			        month = '' + (d.getMonth() + 1),
+			        day = '' + d.getDate(),
+			        year = d.getFullYear(),
+			        hour = '' + d.getHours(),
+			        min = '' + d.getMinutes();
+
+			if (month.length < 2)
+			    month = '0' + month;
+			if (day.length < 2)
+			    day = '0' + day;
+			if (hour.length < 2)
+			    hour = '0' + hour;
+			if (min.length < 2)
+			    min = '0' + min;
+
+			var date = new Date();
+			date.toLocaleDateString();
+
+			var date1 = [day, month, year].join('/');
+			var date2 = [hour, min].join(':')
+
+			return date1 + ' à ' + date2;
+		}
     }
 
     return {
@@ -224,6 +314,7 @@ var KTApp = function() {
             initQuickUserToggleTrigger();
             initSwalNotifications();
             initModalStock();
+            initShowHistory();
         },
 
         initTooltips: function() {

@@ -20,14 +20,14 @@ class Product {
 		$this->_conn = $dB;
     }
 
-    public function findBy($key, $value) {
+    public function findBy($key, $value, $one = true) {
 
 		$sql = 'SELECT * FROM product WHERE '.$key.' = "'.$value.'"';
 
 		try {
 			$res = $this->_conn->query($sql);
 
-			return $res->fetch(PDO::FETCH_ASSOC);
+			return $one ? $res->fetch(PDO::FETCH_ASSOC) : $res->fetchAll(PDO::FETCH_ASSOC);
 
 		} catch(PDOException $e) {
 			return [
@@ -95,13 +95,15 @@ class Product {
 
 			$msg = 'Le produit a bien été sauvegardé.';
 			switch ($type) {
-				case 'stock':
+				case 'inc':
+				case 'dec':
 					$msg = 'Le stock a bien été mis à jour.';
 					break;
 				
 				default:
 					break;
 			}
+
 			return $res ? [
 						'status' => 'success',
 						'msg' => $msg,

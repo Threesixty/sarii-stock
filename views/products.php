@@ -29,6 +29,8 @@ $title = 'Liste des produits'; ?>
 						</div>
 					</div>
 					<div class="card-body">
+
+						<span id="kt_quick_panel_toggle" class="d-none"></span>
 						<!--begin: Datatable-->
 						<table class="table table-separate table-head-custom table-checkable table-responsive" id="kt_datatable_product">
 							<thead>
@@ -71,15 +73,15 @@ $title = 'Liste des produits'; ?>
 						                                <i class="fas fa-shipping-fast"></i>
 						                            </a>
 												  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-														<ul class="nav nav-hoverable flex-column" data-id="<?= $product->id ?>">
+														<ul class="nav nav-hoverable flex-column" data-id="<?= $product->id ?>" data-url="<?= Helper::getUrl('historique') ?>">
 												    		<li class="nav-item">
-												    			<a class="nav-link update-modal-inc" href="#" data-toggle="modal" data-target="#modalIncStock">
+												    			<a class="nav-link update-modal-inc" href="javascript:void(0)" data-toggle="modal" data-target="#modalIncStock">
 												    				<i class="nav-icon fas fa-plus"></i>
 												    				<span class="nav-text">Réapprovisionner</span>
 												    			</a>
 												    		</li>
 												    		<li class="nav-item">
-												    			<a class="nav-link update-modal-dec" href="#" data-toggle="modal" data-target="#modalDecStock">
+												    			<a class="nav-link update-modal-dec" href="javascript:void(0)" data-toggle="modal" data-target="#modalDecStock">
 												    				<i class="nav-icon fas fa-share"></i>
 												    				<span class="nav-text">Expédier</span>
 												    			</a>
@@ -88,7 +90,7 @@ $title = 'Liste des produits'; ?>
 												    			<hr style="margin: 0; border-color: #eee;">
 												    		</li>
 												    		<li class="nav-item">
-												    			<a id="kt_quick_panel_toggle" class="nav-link" href="#">
+												    			<a class="nav-link kt_quick_panel_toggle" href="javascript:void(0)">
 												    				<i class="nav-icon fas la-list"></i>
 												    				<span class="nav-text">Historique</span>
 												    			</a>

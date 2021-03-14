@@ -30,6 +30,9 @@ require_once('components/Helper.php'); ?>
 		<?php
 		if (!empty($params['notifications'])) { ?>
 			<span class="notification" data-status="<?= $params['notifications']['status'] ?>" data-msg="<?= $params['notifications']['msg'] ?>"></span>
+		<?php } 
+		if (!empty($params['notifications2'])) { ?>
+			<span class="notification" data-status="<?= $params['notifications2']['status'] ?>" data-msg="<?= $params['notifications2']['msg'] ?>"></span>
 		<?php } ?>
 		<!--begin::Main-->
 		<!--begin::Header Mobile-->
@@ -138,22 +141,6 @@ require_once('components/Helper.php'); ?>
 														<span></span>
 													</i>
 													<span class="menu-text">Ajouter un produit</span>
-												</a>
-											</li>
-											<li class="menu-item <?= $route == 'index' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-												<a href="<?= Helper::getUrl('index') ?>" class="menu-link">
-													<i class="menu-bullet menu-bullet-dot">
-														<span></span>
-													</i>
-													<span class="menu-text">Réapprovisionement</span>
-												</a>
-											</li>
-											<li class="menu-item <?= $route == 'index' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-												<a href="<?= Helper::getUrl('index') ?>" class="menu-link">
-													<i class="menu-bullet menu-bullet-dot">
-														<span></span>
-													</i>
-													<span class="menu-text">Expédition</span>
 												</a>
 											</li>
 										</ul>
