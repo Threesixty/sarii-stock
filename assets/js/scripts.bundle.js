@@ -187,6 +187,13 @@ var KTApp = function() {
 
     var initModalStock = function() {
 
+    	$('#modalIncStock, #modalDecStock').on('shown.bs.modal', function (relatedTarget) {
+
+    		console.log( $(relatedTarget.currentTarget).find('input[name="product_id"]'));
+		    $(relatedTarget.currentTarget).find('input[name="product_id"]').focus();
+
+		})  
+
         $('.update-modal-inc').on('click', function() {
             $('#modalIncStock').find('input[name="product_id"]').val($(this).closest('ul').data('id'));
         }); 
