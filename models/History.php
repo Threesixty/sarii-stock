@@ -19,7 +19,7 @@ class History {
 
     public function findBy($key, $value, $one = true) {
 
-		$sql = 'SELECT * FROM history WHERE '.$key.' = "'.$value.'"';
+		$sql = 'SELECT * FROM history WHERE '.$key.' = "'.$value.'" ORDER BY id DESC';
 
 		try {
 			$res = $this->_conn->query($sql);

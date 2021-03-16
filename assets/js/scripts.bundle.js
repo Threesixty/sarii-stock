@@ -241,7 +241,7 @@ var KTApp = function() {
 							if (currentHistory['operation'] == 'dec') {
 								style = 'info',
 								icon = 'minus',
-								sign = '+';
+								sign = '-';
 							}
 
 							var operation = currentHistory['operation'] == 'inc' ? 'Approvisionnement ' : 'Expédition ';
