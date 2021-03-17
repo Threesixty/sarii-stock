@@ -63,8 +63,18 @@ class MainController {
 			case 'produits':
 				$params = $this->products();
 				break;
-			case 'historique':
+			case 'historiqueProduit':
 				echo $this->getProductHistory();
+				exit(0);
+				break;
+			case 'utilisateur':
+				$params = $this->user();
+				break;
+			case 'utilisateurs':
+				$params = $this->users();
+				break;
+			case 'historiqueUtilisateur':
+				echo $this->getUserHistory();
 				exit(0);
 				break;
 			case 'connexion':
@@ -281,10 +291,11 @@ class MainController {
 	}
 
 	private function getProductHistory() {
-		if (isset($_GET['productId'])) {
+
+		if (isset($_GET['elementId'])) {
 			
 			$history = new History($this->_dbConn);
-			$productHistory = $history->findBy('id_product', $_GET['productId'], false);
+			$productHistory = $history->findBy('id_product', $_GET['elementId'], false);
 			if (null !== $productHistory) {
 				$user = new User($this->_dbConn);
 				foreach ($productHistory as $key => $history) {
@@ -323,6 +334,79 @@ class MainController {
 				if ($params['notifications'] = $product->save($_POST)) {
 					if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
 						header('location:'.Helper::getUrl('produit', ['id' => $params['notifications']['id'], 'status' => 'new']));
+						exit(0);
+					}
+				} else {
+					$params['notifications'] = [
+							'status' => 'error',
+							'msg' => 'Un problème est survenue lors de l‘enregistrement de la demande. Veuillez contacter l‘administrateur du site',
+						];
+				}
+			}
+		}
+
+		return $params;
+	}
+
+	private function users() {
+
+		$params = [];
+
+		$user = new User($this->_dbConn);
+		if (isset($_GET['del'])) {
+
+			$params['notifications'] = $user->delete($_GET['del']);
+		}
+
+		$params['users'] = $user->getUsers();
+
+		return $params;
+	}
+
+	private function getUserHistory() {
+
+		if (isset($_GET['elementId'])) {
+			
+			$history = new History($this->_dbConn);
+			$userHistory = $history->findBy('id_user', $_GET['elementId'], false);
+			if (null !== $userHistory) {
+				$product = new Product($this->_dbConn);
+				foreach ($userHistory as $key => $history) {
+					$userHistory[$key]['product'] = $product->findBy('id', $history['id_product']);
+				}
+			}
+
+			return json_encode($userHistory);
+		}
+	}
+
+	private function user() {
+
+		$params = [];
+		$user = new User($this->_dbConn);
+		
+		if (isset($_GET['id'])) {
+			$params['currentUser'] = $user->findBy('id', $_GET['id']);
+			if (isset($_GET['status'])) {
+				$params['notifications'] = [
+						'status' => 'success',
+						'msg' => 'L‘utilisateur a bien été sauvegardé',
+					];
+			}
+		}
+
+		if (!empty($_POST)) {
+			$params['currentUser'] = $_POST;
+			$res = $user->findBy('username', $_POST['username']);
+			if (isset($res['id']) && $res['id'] != $_POST['id']) {
+				$params['notifications'] = [
+						'status' => 'error',
+						'msg' => 'L‘identifiant utilisateur saisie est déjà utilisé',
+					];
+			} else {
+				if ($params['notifications'] = $user->save($_POST)) {
+					if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
+						header('location:'.Helper::getUrl('utilisateur', ['id' => $params['notifications']['id'], 'status' => 'new']));
 						exit(0);
 					}
 				} else {

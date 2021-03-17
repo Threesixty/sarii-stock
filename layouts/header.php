@@ -146,7 +146,7 @@ require_once('components/Helper.php'); ?>
 										</ul>
 									</div>
 								</li>
-								<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+								<li class="menu-item menu-item-submenu <?= strpos($route, 'utilisateur') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
 									<a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg-->
@@ -165,7 +165,7 @@ require_once('components/Helper.php'); ?>
 									<div class="menu-submenu">
 										<i class="menu-arrow"></i>
 										<ul class="menu-subnav">
-											<li class="menu-item" aria-haspopup="true">
+											<li class="menu-item <?= $route == 'utilisateurs' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
 												<a href="<?= Helper::getUrl('utilisateurs') ?>" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
@@ -173,7 +173,7 @@ require_once('components/Helper.php'); ?>
 													<span class="menu-text">Liste des utilisateurs</span>
 												</a>
 											</li>
-											<li class="menu-item" aria-haspopup="true">
+											<li class="menu-item <?= $route == 'utilisateur' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
 												<a href="<?= Helper::getUrl('utilisateur') ?>" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>

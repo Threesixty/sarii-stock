@@ -12,6 +12,18 @@ class Helper {
 
 	}
 
+	public static function getRoleName($roleId) {
+
+		$roles = [
+				1 => 'Approvisionnement',
+				2 => 'Expédition',
+				3 => 'Admin',
+			];
+
+		return $roles[$roleId];
+
+	}
+
 	public static function getRoute($config) {
 
 		$route = isset($_GET['r']) ? $_GET['r'] : 'index';

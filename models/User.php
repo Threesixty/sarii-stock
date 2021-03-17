@@ -36,6 +36,46 @@ class User {
 		}
 	}
 
+	public function getUsers() {
+
+		$sql = 'SELECT * FROM user ORDER BY id ASC';
+
+		try {
+			$res = $this->_conn->query($sql);
+
+			return $res->fetchAll(PDO::FETCH_ASSOC);
+
+		} catch(PDOException $e) {
+			return [
+					'status' => 'error',
+					'msg' => $e->getMessage()
+				];
+		}
+	}
+
+	public function delete($userId) {
+
+		$sql = 'DELETE FROM user WHERE id = '.intval($userId);
+
+		try {
+			$res = $this->_conn->query($sql);
+
+			return $res ? [
+						'status' => 'success',
+						'msg' => 'l‘utilisateur a bien été supprimé.',
+					] : [
+						'status' => 'error',
+						'msg' => 'Une erreur s‘est produite lors de l‘enregistrement de l‘l‘utilisateur. Veuillez contacter l‘administrateur du site',
+					];
+
+		} catch(PDOException $e) {
+			return [
+					'status' => 'error',
+					'msg' => $e->getMessage()
+				];
+		}
+	}
+
     public function save($user, $newPwd = false, $pwdToken = false) {
 
     	$password = $newPwd ? sha1($user['password']) : $user['password'];

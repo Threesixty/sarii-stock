@@ -73,7 +73,7 @@ $title = 'Liste des produits'; ?>
 						                                <i class="fas fa-shipping-fast"></i>
 						                            </a>
 												  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-														<ul class="nav nav-hoverable flex-column" data-id="<?= $product->id ?>" data-url="<?= Helper::getUrl('historique') ?>">
+														<ul class="nav nav-hoverable flex-column history-parent" data-id="<?= $product->id ?>" data-url="<?= Helper::getUrl('historiqueProduit') ?>">
 												    		<li class="nav-item">
 												    			<a class="nav-link update-modal-inc" href="javascript:void(0)" data-toggle="modal" data-target="#modalIncStock">
 												    				<i class="nav-icon fas fa-plus"></i>

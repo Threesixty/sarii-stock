@@ -50,9 +50,24 @@ $config = [
 			'view' => 'product',
 			'auth' => true,
 		],
-		'historique' => [
+		'historiqueProduit' => [
 			'layout' => false,
-			'view' => 'history',
+			'view' => '',
+			'auth' => true,
+		],
+		'utilisateurs' => [
+			'layout' => true,
+			'view' => 'users',
+			'auth' => true,
+		],
+		'utilisateur' => [
+			'layout' => true,
+			'view' => 'user',
+			'auth' => true,
+		],
+		'historiqueUtilisateur' => [
+			'layout' => false,
+			'view' => '',
 			'auth' => true,
 		],
 	],
