@@ -19,7 +19,7 @@ class History {
 
     public function findBy($key, $value, $one = true) {
 
-		$sql = 'SELECT * FROM history WHERE '.$key.' = "'.$value.'" ORDER BY id DESC';
+		$sql = 'SELECT * FROM history WHERE '.$key.' = "'.$value.'" ORDER BY created_at DESC';
 
 		try {
 			$res = $this->_conn->query($sql);
@@ -31,6 +31,23 @@ class History {
 					'status' => 'error',
 					'msg' => $e->getMessage()
 				];;
+		}
+	}
+
+	public function getHistories() {
+
+		$sql = 'SELECT * FROM history ORDER BY created_at DESC';
+
+		try {
+			$res = $this->_conn->query($sql);
+
+			return $res->fetchAll(PDO::FETCH_ASSOC);
+
+		} catch(PDOException $e) {
+			return [
+					'status' => 'error',
+					'msg' => $e->getMessage()
+				];
 		}
 	}
 

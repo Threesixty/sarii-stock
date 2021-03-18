@@ -38,6 +38,26 @@ class Helper {
 		return '?r='.$action.$queryString;
 	}
 
+	public static function getDashboardHistory($histories, $db) {
+
+		$cleanHistories = [];
+		if (!empty($histories)) {
+			foreach ($histories as $key => $history) {
+
+				$user = new User($db);
+				$history['user'] = (object) $user->findBy('id', intval($history['id_user']));
+
+				$product = new Product($db);
+				$history['product'] = (object) $product->findBy('id', intval($history['id_product']));
+
+
+				$cleanHistories[strftime('%e %B %Y', $history['created_at'])][date('H:i', $history['created_at'])] = $history;
+			}
+		}
+
+		return $cleanHistories;
+	}
+
 	public static function sendMail($config, $mailContent) {
 
 		$mail = new PHPMailer\PHPMailer\PHPMailer(true);

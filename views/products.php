@@ -19,6 +19,7 @@ $title = 'Liste des produits'; ?>
 				<div class="card card-custom">
 					<div class="card-header flex-wrap py-5">
 						<div class="card-title">
+							<?= $title ?>
 						</div>
 						<div class="card-toolbar">
 							<!--begin::Button-->
@@ -75,24 +76,24 @@ $title = 'Liste des produits'; ?>
 												  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
 														<ul class="nav nav-hoverable flex-column history-parent" data-id="<?= $product->id ?>" data-url="<?= Helper::getUrl('historiqueProduit') ?>">
 												    		<li class="nav-item">
-												    			<a class="nav-link update-modal-inc" href="javascript:void(0)" data-toggle="modal" data-target="#modalIncStock">
+												    			<a class="nav-link text-hover-primary update-modal-inc" href="javascript:void(0)" data-toggle="modal" data-target="#modalIncStock">
 												    				<i class="nav-icon fas fa-plus"></i>
-												    				<span class="nav-text">Réapprovisionner</span>
+												    				<span>Approvisionner</span>
 												    			</a>
 												    		</li>
 												    		<li class="nav-item">
-												    			<a class="nav-link update-modal-dec" href="javascript:void(0)" data-toggle="modal" data-target="#modalDecStock">
+												    			<a class="nav-link text-hover-warning update-modal-dec" href="javascript:void(0)" data-toggle="modal" data-target="#modalDecStock">
 												    				<i class="nav-icon fas fa-share"></i>
-												    				<span class="nav-text">Expédier</span>
+												    				<span>Expédier</span>
 												    			</a>
 												    		</li>
 												    		<li>
 												    			<hr style="margin: 0; border-color: #eee;">
 												    		</li>
 												    		<li class="nav-item">
-												    			<a class="nav-link kt_quick_panel_toggle" href="javascript:void(0)">
+												    			<a class="nav-link text-hover-dark kt_quick_panel_toggle" href="javascript:void(0)">
 												    				<i class="nav-icon fas la-list"></i>
-												    				<span class="nav-text">Historique</span>
+												    				<span class="text-hover-dark">Historique</span>
 												    			</a>
 												    		</li>
 														</ul>

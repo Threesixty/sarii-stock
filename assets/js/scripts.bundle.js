@@ -235,11 +235,11 @@ var KTApp = function() {
 
 							var currentHistory = histories[idx];
 
-							var style = 'success',
+							var style = 'primary',
 								icon = 'plus',
 								sign = '+';
 							if (currentHistory['operation'] == 'dec') {
-								style = 'info',
+								style = 'warning',
 								icon = 'minus',
 								sign = '-';
 							}

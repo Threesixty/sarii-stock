@@ -17,6 +17,11 @@ $title = 'Ajouter un produit'; ?>
 			<div class="container-fluid">
 				<!--begin::Card-->
 				<div class="card card-custom">
+					<div class="card-header flex-wrap py-5">
+						<div class="card-title">
+							<?= $title ?>
+						</div>
+					</div>
 					<div class="card-body p-0">
 						<div class="wizard wizard-1" id="kt_projects_add" data-wizard-state="step-first" data-wizard-clickable="true">
 							<!--begin::Wizard Nav-->

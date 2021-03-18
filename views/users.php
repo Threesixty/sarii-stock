@@ -19,6 +19,7 @@ $title = 'Liste des utilisateurs'; ?>
 				<div class="card card-custom">
 					<div class="card-header flex-wrap py-5">
 						<div class="card-title">
+							<?= $title ?>
 						</div>
 						<div class="card-toolbar">
 							<!--begin::Button-->
@@ -52,16 +53,16 @@ $title = 'Liste des utilisateurs'; ?>
 									foreach ($users as $key => $currentUser) {
 										$currentUser = (object) $currentUser;
 
-										$roleColor = 'primary';
+										$roleColor = 'dark';
 										switch ($currentUser->role) {
 											case 1:
-												$roleColor = 'info';
+												$roleColor = 'primary';
 												break;
 											case 2:
 												$roleColor = 'warning';
 												break;
 											case 3:
-												$roleColor = 'primary';
+												$roleColor = 'info';
 												break;
 											
 											default:
@@ -69,8 +70,8 @@ $title = 'Liste des utilisateurs'; ?>
 										} ?>
 
 										<tr class="<?= $currentUser->status == 0 ? 'bg-dark-o-20' : '' ?>">
-											<td class="m-3">#<?= $currentUser->id ?></td>
-											<td><a href="<?= Helper::getUrl('utilisateur', ['id' => $currentUser->id]) ?>" class="font-weight-bolder text-<?= $roleColor ?>"><?= $currentUser-> username ?></a></td>
+											<td class="m-3 border-left-3 border-left-<?= $roleColor ?>">#<?= $currentUser->id ?></td>
+											<td><a href="<?= Helper::getUrl('utilisateur', ['id' => $currentUser->id]) ?>" class="font-weight-bolder"><?= $currentUser-> username ?></a></td>
 											<td><?= $currentUser->email ?></td>
 											<td><?= strtoupper($currentUser->lastname) ?></td>
 											<td><?= ucwords($currentUser->firstname) ?></td>

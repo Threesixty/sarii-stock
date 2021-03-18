@@ -55,28 +55,6 @@ class MainController {
 			$this->goSignin();
 
 		switch ($route) {
-			case 'index':
-				break;
-			case 'produit':
-				$params = $this->product();
-				break;
-			case 'produits':
-				$params = $this->products();
-				break;
-			case 'historiqueProduit':
-				echo $this->getProductHistory();
-				exit(0);
-				break;
-			case 'utilisateur':
-				$params = $this->user();
-				break;
-			case 'utilisateurs':
-				$params = $this->users();
-				break;
-			case 'historiqueUtilisateur':
-				echo $this->getUserHistory();
-				exit(0);
-				break;
 			case 'connexion':
 				if ($this->_session->get('user'))
 					$this->goHome();
@@ -102,9 +80,30 @@ class MainController {
 					}
 				}
 				break;
+			case 'index':
+				$params = $this->dashboard();
+				break;
+			case 'produit':
+				$params = $this->product();
+				break;
+			case 'produits':
+				$params = $this->products();
+				break;
+			case 'historiqueProduit':
+				echo $this->getProductHistory();
+				exit(0);
+				break;
+			case 'utilisateur':
+				$params = $this->user();
+				break;
+			case 'utilisateurs':
+				$params = $this->users();
+				break;
+			case 'historiqueUtilisateur':
+				echo $this->getUserHistory();
+				break;
 			
 			default:
-				# code...
 				break;
 		}
 
@@ -119,12 +118,10 @@ class MainController {
 	}
 
 	public function goHome() {
-		#header('Location: /_sgbd_logistic/connexion');
 		header('Location: '.$_SERVER['PHP_SELF'].'?r=index');
 	}
 
 	public function goSignin() {
-		#header('Location: /_sgbd_logistic/connexion');
 		header('Location: '.$_SERVER['PHP_SELF'].'?r=connexion');
 	}
 
@@ -167,6 +164,7 @@ class MainController {
 	}
 
 	private function signup() {
+
 		$user = new User($this->_dbConn);
 		$res = $user->findBy('username', $_POST['username']);
 		if (isset($res['id'])) {
@@ -204,6 +202,7 @@ class MainController {
 	}
 
 	private function forgot() {
+
 		$user = new User($this->_dbConn);
 		$res = $user->findBy('email', $_POST['email']);
 		$sentMail = true;
@@ -233,6 +232,16 @@ class MainController {
 					'status' => 'error',
 					'msg' => 'Impossible d‘envoyer l‘email. Veuillez contacter l‘administrateur du site',
 				];
+
+		return $params;
+	}
+
+	private function dashboard() {
+
+		$params = [];
+		$history = new History($this->_dbConn);
+
+		$params['histories'] = Helper::getDashboardHistory($history->getHistories(), $this->_dbConn);
 
 		return $params;
 	}

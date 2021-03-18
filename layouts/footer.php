@@ -159,7 +159,7 @@
 					<input type="hidden" name="product_id">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title text-uppercase text-success" id="exampleModalLabel">Réapprovisionner</h5>
+							<h5 class="modal-title text-uppercase text-primary" id="exampleModalLabel">Approvisionner</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<i aria-hidden="true" class="ki ki-close"></i>
 							</button>
@@ -171,8 +171,8 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-sm btn-light-success font-weight-bold" data-dismiss="modal">Annuler</button>
-							<button type="submit" class="btn btn-sm btn-success font-weight-bold">Valider</button>
+							<button type="button" class="btn btn-sm btn-light-primary font-weight-bold" data-dismiss="modal">Annuler</button>
+							<button type="submit" class="btn btn-sm btn-primary font-weight-bold">Valider</button>
 						</div>
 					</div>
 				</form>
@@ -186,7 +186,7 @@
 					<input type="hidden" name="product_id">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title text-uppercase text-info" id="exampleModalLabel">Expédier</h5>
+							<h5 class="modal-title text-uppercase text-warning" id="exampleModalLabel">Expédier</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<i aria-hidden="true" class="ki ki-close"></i>
 							</button>
@@ -198,8 +198,8 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-sm btn-light-info font-weight-bold" data-dismiss="modal">Annuler</button>
-							<button type="submit" class="btn btn-sm btn-info font-weight-bold">Valider</button>
+							<button type="button" class="btn btn-sm btn-light-warning font-weight-bold" data-dismiss="modal">Annuler</button>
+							<button type="submit" class="btn btn-sm btn-warning font-weight-bold">Valider</button>
 						</div>
 					</div>
 				</form>
@@ -271,6 +271,7 @@
 		<script src="assets/js/pages/crud/datatables/advanced/multiple-controls.js"></script>
 		<script src="assets/js/pages/custom/projects/add-project.js"></script>
 		<script src="assets/js/pages/crud/forms/widgets/select2.js"></script>
+		<script src="assets/js/pages/features/charts/apexcharts.js"></script>
 	</body>
 	<!--end::Body-->
 </html>

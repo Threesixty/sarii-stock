@@ -7659,6 +7659,9 @@ button.bg-white:focus {
 .border-left-0 {
   border-left: 0 !important;
 }
+.border-left-3 {
+  border-left: 3px solid #EBEDF3 !important;
+}
 
 .border-primary {
   border-color: #3699FF !important;
@@ -76206,7 +76209,7 @@ code {
 .timeline.timeline-6:before {
   content: "";
   position: absolute;
-  left: 51px;
+  left: 60px;
   width: 3px;
   top: 0;
   bottom: 0;
