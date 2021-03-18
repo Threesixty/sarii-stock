@@ -1,7 +1,7 @@
 "use strict";
 
 // Shared Colors Definition
-const primary = '#6993FF';
+const primary = '#3699FF';
 const success = '#1BC5BD';
 const info = '#8950FC';
 const warning = '#FFA800';
@@ -81,10 +81,10 @@ var KTApexChartsDemo = function () {
 		const apexChart = "#chart_2";
 		var options = {
 			series: [{
-				name: 'series1',
+				name: 'Approvisionnemment',
 				data: [31, 40, 28, 51, 42, 109, 100]
 			}, {
-				name: 'series2',
+				name: 'Expédition',
 				data: [11, 32, 45, 32, 34, 52, 41]
 			}],
 			chart: {
@@ -93,6 +93,9 @@ var KTApexChartsDemo = function () {
 			},
 			dataLabels: {
 				enabled: false
+			},
+			legend: {
+				position: 'top'
 			},
 			stroke: {
 				curve: 'smooth'
@@ -106,7 +109,7 @@ var KTApexChartsDemo = function () {
 					format: 'dd/MM/yy HH:mm'
 				},
 			},
-			colors: [primary, success]
+			colors: [primary, warning]
 		};
 
 		var chart = new ApexCharts(document.querySelector(apexChart), options);
