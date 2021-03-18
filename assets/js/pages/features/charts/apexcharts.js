@@ -95,7 +95,7 @@ var KTApexChartsDemo = function () {
 				enabled: false
 			},
 			legend: {
-				position: 'top'
+				position: 'bottom'
 			},
 			stroke: {
 				curve: 'smooth'

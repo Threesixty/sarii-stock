@@ -5,6 +5,22 @@ require_once('components/PHPMailer/src/SMTP.php');
 
 class Helper {
 
+	public static $_bonjour = ['Bonjour', 'Assalam Aleykom', 'Buongiorno', 'Hola', 'Nĭ hăo', 'Bom dia', 'Hi', 'Chào', ];
+	public static $_roleNames = [
+			1 => [
+				'name' => 'Approvisionnement',
+				'color' => 'primary'
+			],
+			2 => [
+				'name' => 'Expédition',
+				'color' => 'warning'
+			],
+			3 => [
+				'name' => 'Admin',
+				'color' => 'info'
+			],
+		];
+
     public static function pp($mixed) {
     	echo '<pre class="debug"><code>';
     	var_dump($mixed);
@@ -12,15 +28,15 @@ class Helper {
 
 	}
 
-	public static function getRoleName($roleId) {
+	public static function bonjour() {
 
-		$roles = [
-				1 => 'Approvisionnement',
-				2 => 'Expédition',
-				3 => 'Admin',
-			];
+		return static::$_bonjour[array_rand(static::$_bonjour)];
 
-		return $roles[$roleId];
+	}
+
+	public static function getRoleName($roleId, $color = false) {
+
+		return $color ? static::$_roleNames[$roleId]['color'] :  static::$_roleNames[$roleId]['name'];
 
 	}
 

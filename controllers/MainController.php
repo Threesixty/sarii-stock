@@ -54,6 +54,16 @@ class MainController {
 		if ($this->_config['routes'][$route]['auth'] && !$user)
 			$this->goSignin();
 
+		# User history
+		$history = new History($this->_dbConn);
+		$currentUserHistories = $history->findBy('id_user', $user['id'], false);
+		if (null !== $currentUserHistories) {
+			$product = new Product($this->_dbConn);
+			foreach ($currentUserHistories as $key => $history) {
+				$currentUserHistories[$key]['product'] = $product->findBy('id', $history['id_product']);
+			}
+		}
+
 		switch ($route) {
 			case 'connexion':
 				if ($this->_session->get('user'))
@@ -101,6 +111,7 @@ class MainController {
 				break;
 			case 'historiqueUtilisateur':
 				echo $this->getUserHistory();
+				exit(0);
 				break;
 			
 			default:

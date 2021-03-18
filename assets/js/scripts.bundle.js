@@ -194,7 +194,6 @@ var KTApp = function() {
 
     	$('#modalIncStock, #modalDecStock').on('shown.bs.modal', function (relatedTarget) {
 
-    		console.log( $(relatedTarget.currentTarget).find('input[name="product_id"]'));
 		    $(relatedTarget.currentTarget).find('input[name="product_id"]').focus();
 
 		})  

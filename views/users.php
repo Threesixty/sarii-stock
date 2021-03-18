@@ -51,31 +51,15 @@ $title = 'Liste des utilisateurs'; ?>
 								<?php 
 								if (null !== $users) {
 									foreach ($users as $key => $currentUser) {
-										$currentUser = (object) $currentUser;
-
-										$roleColor = 'dark';
-										switch ($currentUser->role) {
-											case 1:
-												$roleColor = 'primary';
-												break;
-											case 2:
-												$roleColor = 'warning';
-												break;
-											case 3:
-												$roleColor = 'info';
-												break;
-											
-											default:
-												break;
-										} ?>
+										$currentUser = (object) $currentUser; ?>
 
 										<tr class="<?= $currentUser->status == 0 ? 'bg-dark-o-20' : '' ?>">
-											<td class="m-3 border-left-3 border-left-<?= $roleColor ?>">#<?= $currentUser->id ?></td>
+											<td class="m-3 border-left-3 border-left-<?= Helper::getRoleName($currentUser->role, true) ?>">#<?= $currentUser->id ?></td>
 											<td><a href="<?= Helper::getUrl('utilisateur', ['id' => $currentUser->id]) ?>" class="font-weight-bolder"><?= $currentUser-> username ?></a></td>
 											<td><?= $currentUser->email ?></td>
 											<td><?= strtoupper($currentUser->lastname) ?></td>
 											<td><?= ucwords($currentUser->firstname) ?></td>
-											<td><span class="text-uppercase text-<?= $roleColor ?>"><?= Helper::getRoleName($currentUser->role) ?></span></td>
+											<td><span class="text-uppercase text-<?= Helper::getRoleName($currentUser->role, true) ?>"><?= Helper::getRoleName($currentUser->role) ?></span></td>
 											<td><span class="label label-lg font-weight-bold label-light-<?= $currentUser->status == 1 ? 'success' : 'danger' ?> label-inline"><?= $currentUser->status == 1 ? 'Actif' : 'Désactivé' ?></span></td>
 											<td data-order="<?= $currentUser->created_at ?>"><?= strftime('%e %B %Y', $currentUser->created_at) ?></td>
 											<td nowrap="nowrap" class="history-parent" data-id="<?= $currentUser->id ?>" data-url="<?= Helper::getUrl('historiqueUtilisateur') ?>">
