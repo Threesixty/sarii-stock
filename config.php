@@ -9,15 +9,21 @@ $config = [
 		'pwd' => '',
 		'host' => 'localhost',
 	],
+	'dbProd' => [
+		'name' => 'sarii-stock',
+		'user' => 'sarii-stock',
+		'pwd' => 'SariiStock21',
+		'host' => '10.0.247.25',
+	],
 	'mail' => [
-        'host' => 'smtp.gmail.com',
-        'username' => 'dev.toupie360@gmail.com',
-        'password' => 'unibeton360',
+        'host' => 'ssl0.ovh.net',
+        'username' => 'noreply@sarii-stock.tech',
+        'password' => 'SariiStock21',
         'port' => '465',
         'encryption' => 'ssl',
         'from' => [
         	'name' => '{SARII-Stock}',
-        	'email' => 'noreply@sarii-stock.fr',
+        	'email' => 'noreply@sarii-stock.tech',
         ],
 		'admin' => [
 			'name' => '{SARII-Stock} Admin',
@@ -68,6 +74,11 @@ $config = [
 		'historiqueUtilisateur' => [
 			'layout' => false,
 			'view' => '',
+			'auth' => true,
+		],
+		'categories' => [
+			'layout' => true,
+			'view' => 'categories',
 			'auth' => true,
 		],
 	],

@@ -182,7 +182,7 @@ require_once('components/Helper.php'); ?>
 										</ul>
 									</div>
 								</li>
-								<li class="menu-item menu-item-submenu <?= strpos($route, 'utilisateur') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
+								<li class="menu-item menu-item-submenu <?= strpos($route, 'categories') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
 									<a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon-->
