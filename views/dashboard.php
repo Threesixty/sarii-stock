@@ -57,7 +57,7 @@ $title = 'Tableau de bord'; ?>
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-0">
+							<div class="card-body card-timeline pt-0">
 								<!--begin::Timeline-->
 								<div class="timeline timeline-6">
 

@@ -52917,6 +52917,11 @@ i {
 .card.card-custom > .card-body {
   padding: 2rem 2.25rem;
 }
+.card.card-custom > .card-body.card-timeline {
+  max-height: 450px;
+  overflow: auto;
+  margin-bottom: 15px;
+}
 .card.card-custom > .card-footer {
   background-color: transparent;
 }
