@@ -48,7 +48,7 @@ var KTDatatablesAdvancedMultipleControls = function() {
                 { "searchable": false, "targets": [8] }
 			],
             order: [[ 1, "desc" ]],
-            pageLength: 10,
+            pageLength: 25,
             language: language
 		});
 	};

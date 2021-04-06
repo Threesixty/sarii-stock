@@ -10,6 +10,7 @@ class Product {
 	public $name;
 	public $description;
 	public $reference;
+	public $supplier;
 	public $category_id;
 	public $stock;
 	public $stock_mini;
@@ -83,11 +84,11 @@ class Product {
 
     	$action = false;
     	if (isset($product['id'])) {
-			$sql = 'UPDATE product SET name = "'.$product['name'].'", description = "'.$product['description'].'", reference = "'.$product['reference'].'", category_id = "'.$product['category_id'].'", stock = "'.$product['stock'].'", stock_mini = "'.$product['stock_mini'].'", status = "'.$product['status'].'" WHERE id = '.$product['id'];
+			$sql = 'UPDATE product SET name = "'.$product['name'].'", description = "'.$product['description'].'", reference = "'.$product['reference'].'", supplier = "'.$product['supplier'].'", category_id = "'.$product['category_id'].'", stock = "'.$product['stock'].'", stock_mini = "'.$product['stock_mini'].'", status = "'.$product['status'].'" WHERE id = '.$product['id'];
     	} else {
 
     		$action = 'redirect';
-			$sql = 'INSERT INTO product (name, description, reference, category_id, stock, stock_mini, status, created_at) VALUES ("'.$product['name'].'", "'.$product['description'].'", "'.$product['reference'].'", "'.$product['category_id'].'", "'.$product['stock'].'", "'.$product['stock_mini'].'", '.$product['status'].', "'.time().'")';
+			$sql = 'INSERT INTO product (name, description, reference, category_id, stock, stock_mini, status, created_at) VALUES ("'.$product['name'].'", "'.$product['description'].'", "'.$product['reference'].'", "'.$product['supplier'].'", "'.$product['category_id'].'", "'.$product['stock'].'", "'.$product['stock_mini'].'", '.$product['status'].', "'.time().'")';
     	}
 
 		try {

@@ -40,8 +40,8 @@ $title = 'Liste des produits'; ?>
 									<th>Nom du produit</th>
 									<th>Référence</th>
 									<th>Catégorie</th>
+									<th>Fournisseur</th>
 									<th>Stock</th>
-									<th>Alerte stock mini</th>
 									<th>Statut</th>
 									<th>Date de création</th>
 									<th>Actions</th>
@@ -66,8 +66,8 @@ $title = 'Liste des produits'; ?>
 												<?= $product->reference ?>
 												<a href="javascript:void(0)" class="ml-1 show-barcode" data-img="data:image/png;base64,<?= Helper::getBarcodeImg($product->reference) ?>"><i class="fa fa-eye"></i></a></td>
 											<td><?= $product->category_id ?></td>
+											<td><?= $product->supplier ?></td>
 											<td><span class="label label-xl font-weight-boldest label-light-<?= $stockColor ?> label-inline"><?= $product->stock > 0 ? $product->stock : 'Rupture' ?></span></td>
-											<td><?= $product->stock_mini ?></td>
 											<td><span class="label label-lg font-weight-bold label-light-<?= $product->status == 1 ? 'success' : 'danger' ?> label-inline"><?= $product->status == 1 ? 'Actif' : 'Désactivé' ?></span></td>
 											<td data-order="<?= $product->created_at ?>"><?= strftime('%e %B %Y', $product->created_at) ?></td>
 											<td nowrap="nowrap">

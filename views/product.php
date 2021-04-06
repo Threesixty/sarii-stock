@@ -200,6 +200,12 @@ $title = 'Ajouter un produit'; ?>
 															<input class="form-control form-control-lg form-control-solid" name="reference" type="text" value="<?= isset($currentProduct['reference']) ? $currentProduct['reference'] : '' ?>" />
 														</div>
 													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 col-form-label">Fournisseur *</label>
+														<div class="col-lg-9 col-xl-9">
+															<input class="form-control form-control-lg form-control-solid" name="supplier" type="text" value="<?= isset($currentProduct['supplier']) ? $currentProduct['supplier'] : '' ?>" />
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
