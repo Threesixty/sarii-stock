@@ -61,8 +61,10 @@ $title = 'Liste des produits'; ?>
 
 										<tr class="<?= $product->status == 0 ? 'bg-dark-o-20' : '' ?>">
 											<td class="m-3">#<?= $product->id ?></td>
-											<td><a href="<?= Helper::getUrl('produit', ['id' => $product->id]) ?>" class="font-weight-bolder"><?= $product->name ?></a></td>
-											<td><?= $product->reference ?></td>
+											<td class="product-name"><a href="<?= Helper::getUrl('produit', ['id' => $product->id]) ?>" class="font-weight-bolder"><?= $product->name ?></a></td>
+											<td style="white-space: nowrap;">
+												<?= $product->reference ?>
+												<a href="javascript:void(0)" class="ml-1 show-barcode" data-img="data:image/png;base64,<?= Helper::getBarcodeImg($product->reference) ?>"><i class="fa fa-eye"></i></a></td>
 											<td><?= $product->category_id ?></td>
 											<td><span class="label label-xl font-weight-boldest label-light-<?= $stockColor ?> label-inline"><?= $product->stock > 0 ? $product->stock : 'Rupture' ?></span></td>
 											<td><?= $product->stock_mini ?></td>

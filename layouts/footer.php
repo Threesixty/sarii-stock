@@ -90,6 +90,27 @@
 		</div>
 		<!-- end::User Panel-->
 
+		<!-- Show barcode -->
+		<div class="modal fade show" id="modalBarcode" tabindex="-1" aria-labelledby="modalBarcodeLabel" aria-modal="true" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title text-uppercase" id="exampleModalLabel"></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<i aria-hidden="true" class="ki ki-close"></i>
+						</button>
+					</div>
+					<div class="modal-body text-center">
+						<img class="barcode-img" src="" style="max-width: 100%">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-sm btn-success font-weight-bold print-barcode">Imprimer</button>
+						<button type="button" class="btn btn-sm btn-primary font-weight-bold" data-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Add stock -->
 		<div class="modal fade show" id="modalIncStock" tabindex="-1" aria-labelledby="modalIncStockLabel" aria-modal="true" role="dialog" data-backdrop="static">
 			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">

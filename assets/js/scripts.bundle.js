@@ -290,6 +290,29 @@ var KTApp = function() {
 
 			return date1 + ' à ' + date2;
 		}
+    };
+
+    var initModalBarcode = function() {
+
+    	$('.show-barcode').on('click', function() {
+
+    		$('#modalBarcode').find('.modal-title').html($(this).closest('tr').find('.product-name a').text());
+    		$('#modalBarcode').find('.barcode-img').attr('src', $(this).data('img'));
+    		$('#modalBarcode').modal('show');
+    	});
+
+    	$('.print-barcode').on('click', function() {
+
+	        var printWindow = window.open('', 'Imprimer','height=400,width=600');
+	        var html = '<html><head><title>Imprimer</title></head><body>' + $(this).closest('.modal-content').find('.modal-title').text() + '<p><img src="' + $(this).closest('.modal-content').find('.barcode-img').attr('src') + '"></p></body></html>';
+	        printWindow.document.write(html);
+	        printWindow.document.close();
+			printWindow.focus();
+			printWindow.print();
+			printWindow.close();
+			return false;
+    	});
+
     }
 
     return {
@@ -314,6 +337,7 @@ var KTApp = function() {
             initSwalNotifications();
             initModalStock();
             initShowHistory();
+            initModalBarcode();
         },
 
         initTooltips: function() {

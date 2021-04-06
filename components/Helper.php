@@ -1,11 +1,22 @@
 <?php
+//PHPMailer
 require_once('components/PHPMailer/src/PHPMailer.php');
 require_once('components/PHPMailer/src/Exception.php');
 require_once('components/PHPMailer/src/SMTP.php');
+// Barecode generator
+require_once('components/Barecode/src/Barcode.php');
+require_once('components/Barecode/src/BarcodeBar.php');
+require_once('components/Barecode/src/BarcodeGenerator.php');
+require_once('components/Barecode/src/BarcodeGeneratorPNG.php');
+require_once('components/Barecode/src/Types/TypeInterface.php');
+require_once('components/Barecode/src/Types/TypeCode39.php');
+require_once('components/Barecode/src/Exceptions/BarcodeException.php');
+require_once('components/Barecode/src/Exceptions/InvalidCharacterException.php');
+
 
 class Helper {
 
-	public static $_bonjour = ['Bonjour', 'Assalam Aleykom', 'Buongiorno', 'Hola', 'Nĭ hăo', 'Bom dia', 'Hi', 'Chào', ];
+	public static $_bonjour = ['Bonjour', 'Assalam Aleykom', 'Buongiorno', 'Hola', 'Nĭ hăo', 'Bom dia', 'Hi', 'Chào'];
 	public static $_roleNames = [
 			1 => [
 				'name' => 'Approvisionnement',
@@ -100,6 +111,12 @@ class Helper {
 		} catch (Exception $e) {
 		    return false;
 		}
+	}
+
+	public static function getBarcodeImg($reference) {
+
+		$generator = new Picqer\Barcode\BarcodeGeneratorPNG();
+		return base64_encode($generator->getBarcode($reference, $generator::TYPE_CODE_39, 2, 100));
 	}
 }
 
