@@ -45,6 +45,12 @@ class Helper {
 
 	}
 
+	public static function getRoleNames() {
+
+		return static::$_roleNames;
+
+	}
+
 	public static function getRoleName($roleId, $color = false) {
 
 		return $color ? static::$_roleNames[$roleId]['color'] :  static::$_roleNames[$roleId]['name'];

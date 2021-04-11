@@ -3,8 +3,9 @@ require_once('components/Widget.php');
 require_once('components/Helper.php');
 
 $currentUser = isset($params['currentUser']) ? $params['currentUser'] : null;
+$title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['lastname'] : 'Ajouter un utilisateur';
 
-$title = 'Ajouter un utilisateur'; ?>
+#Helper::pp($currentUser) ?>
 
 	<!--begin::Content-->
 	<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -23,100 +24,69 @@ $title = 'Ajouter un utilisateur'; ?>
 						</div>
 					</div>
 					<div class="card-body p-5">
-						<?= Helper::pp($currentUser) ?>
 
 						<form class="form" method="post">
 
 							<div class="form-group row">
-								<label class="col-2 col-form-label">Text</label>
-								<div class="col-10">
-									<input class="form-control" type="text" value="Artisanal kale" id="example-text-input" />
+								<label class="col-sm-2 col-form-label">Identifiant</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'disabled' : '' ?>>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-search-input" class="col-2 col-form-label">Search</label>
-								<div class="col-10">
-									<input class="form-control" type="search" value="How do I shoot web" id="example-search-input" />
+								<label class="col-sm-2 col-form-label">Mot de passe</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" placeholder="Mot de passe" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-email-input" class="col-2 col-form-label">Email</label>
-								<div class="col-10">
-									<input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input" />
+								<label class="col-sm-2 col-form-label">Prénom</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" placeholder="Prénom" value="<?= isset($currentUser['firstname']) ? $currentUser['firstname'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-url-input" class="col-2 col-form-label">URL</label>
-								<div class="col-10">
-									<input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input" />
+								<label class="col-sm-2 col-form-label">Nom</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" placeholder="Nom" value="<?= isset($currentUser['lastname']) ? $currentUser['lastname'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
-								<div class="col-10">
-									<input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input" />
+								<label class="col-sm-2 col-form-label">Email</label>
+								<div class="col-sm-10">
+									<input type="email" class="form-control" placeholder="Email" value="<?= isset($currentUser['email']) ? $currentUser['email'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-password-input" class="col-2 col-form-label">Password</label>
-								<div class="col-10">
-									<input class="form-control" type="password" value="hunter2" id="example-password-input" />
+								<label class="col-sm-2 col-form-label">Rôle</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="kt_select2_1" name="param" required="">
+										<option></option>
+										<?php
+										$roles = Helper::getRoleNames();
+										foreach ($roles as $key => $role) { ?>
+											<option value="<?= $key ?>" <?= isset($currentUser['role']) && $currentUser['role'] == $key ? 'selected' : '' ?>><?= $role['name'] ?></option>
+										<?php } ?>
+									</select>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-number-input" class="col-2 col-form-label">Number</label>
-								<div class="col-10">
-									<input class="form-control" type="number" value="42" id="example-number-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
-								<div class="col-10">
-									<input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-date-input" class="col-2 col-form-label">Date</label>
-								<div class="col-10">
-									<input class="form-control" type="date" value="2011-08-19" id="example-date-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-month-input" class="col-2 col-form-label">Month</label>
-								<div class="col-10">
-									<input class="form-control" type="month" value="2011-08" id="example-month-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-week-input" class="col-2 col-form-label">Week</label>
-								<div class="col-10">
-									<input class="form-control" type="week" value="2011-W33" id="example-week-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-time-input" class="col-2 col-form-label">Time</label>
-								<div class="col-10">
-									<input class="form-control" type="time" value="13:45:00" id="example-time-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-color-input" class="col-2 col-form-label">Color</label>
-								<div class="col-10">
-									<input class="form-control" type="color" value="#563d7c" id="example-color-input" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-email-input" class="col-2 col-form-label">Range</label>
-								<div class="col-10">
-									<input class="form-control" type="range" />
+								<label class="col-sm-2 col-form-label">Statut</label>
+								<div class="col-sm-10">
+									<span class="switch">
+										<label>
+											<input type="checkbox" <?= isset($currentUser['status']) && $currentUser['status'] == 1 ? 'checked="checked"' : '' ?> name="status">
+											<span></span>
+										</label>
+									</span>
 								</div>
 							</div>
 							<div class="card-footer">
 								<div class="row">
-									<div class="col-2"></div>
-									<div class="col-10">
-										<button type="reset" class="btn btn-success mr-2">Submit</button>
-										<button type="reset" class="btn btn-secondary">Cancel</button>
+									<div class="col-sm-2 col-form-label"></div>
+									<div class="col-sm-10">
+										<button type="reset" class="btn btn-secondary">Annuler</button>
+										<button type="submit" class="btn btn-success mr-2">Valider</button>
 									</div>
 								</div>
 							</div>
