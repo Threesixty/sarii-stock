@@ -30,7 +30,7 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label">Identifiant</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'disabled' : '' ?>>
+									<input type="text" class="form-control" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'data-toggle="tooltip" data-placement="left" data-theme="dark" title="L‘identifiant ne peut être modifié" disabled' : '' ?>>
 								</div>
 							</div>
 							<div class="form-group row">
