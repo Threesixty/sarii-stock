@@ -342,6 +342,10 @@ class MainController {
 		
 		if (isset($_GET['id'])) {
 			$params['currentProduct'] = $product->findBy('id', $_GET['id']);
+
+			$category = new Category($this->_dbConn);
+			$params['categories'] = $category->getCategories();
+
 			if (isset($_GET['status'])) {
 				$params['notifications'] = [
 						'status' => 'success',

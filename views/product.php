@@ -3,6 +3,7 @@ require_once('components/Widget.php');
 require_once('components/Helper.php');
 
 $currentProduct = isset($params['currentProduct']) ? $params['currentProduct'] : null;
+$categories = isset($params['categories']) ? $params['categories'] : null;
 
 $title = 'Ajouter un produit'; ?>
 
@@ -190,7 +191,10 @@ $title = 'Ajouter un produit'; ?>
 														<div class="col-lg-9 col-xl-9">
 															<select class="form-control form-control-lg form-control-solid" id="kt_select2_1" name="category_id">
 																<option value=""></option>
-																<option value="1" <?= isset($currentProduct['category_id']) && $currentProduct['category_id'] == 1 ? 'selected' : '' ?>>Catégorie 1</option>
+																<?php
+																foreach ($categories as $key => $category) { ?>
+																	<option value="<?= $category['id'] ?>" <?= isset($currentProduct['category_id']) && $currentProduct['category_id'] == $category['id'] ? 'selected' : '' ?>><?= $category['name'] ?></option>
+																<?php } ?>
 															</select>
 														</div>
 													</div>
