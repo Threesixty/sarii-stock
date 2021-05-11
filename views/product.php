@@ -161,7 +161,7 @@ $title = 'Ajouter un produit'; ?>
 											<div class="row">
 												<div class="col-xl-12">
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 col-form-label">Nom du produit *</label>
+														<label class="col-xl-3 col-lg-3 col-form-label">Nom du produit <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
 															<input class="form-control form-control-lg form-control-solid" name="name" type="text" value="<?= isset($currentProduct['name']) ? $currentProduct['name'] : '' ?>" />
 														</div>
@@ -186,7 +186,7 @@ $title = 'Ajouter un produit'; ?>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 col-form-label">Catégorie *</label>
+														<label class="col-xl-3 col-lg-3 col-form-label">Catégorie <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
 															<select class="form-control form-control-lg form-control-solid" id="kt_select2_1" name="category_id">
 																<option value=""></option>
@@ -195,13 +195,13 @@ $title = 'Ajouter un produit'; ?>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 col-form-label">Référence *</label>
+														<label class="col-xl-3 col-lg-3 col-form-label">Référence <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
 															<input class="form-control form-control-lg form-control-solid" name="reference" type="text" value="<?= isset($currentProduct['reference']) ? $currentProduct['reference'] : '' ?>" />
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 col-form-label">Fournisseur *</label>
+														<label class="col-xl-3 col-lg-3 col-form-label">Fournisseur <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
 															<input class="form-control form-control-lg form-control-solid" name="supplier" type="text" value="<?= isset($currentProduct['supplier']) ? $currentProduct['supplier'] : '' ?>" />
 														</div>
@@ -220,13 +220,13 @@ $title = 'Ajouter un produit'; ?>
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 col-form-label">Stock actuel *</label>
+														<label class="col-xl-3 col-lg-3 col-form-label">Stock actuel <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
 															<input class="form-control form-control-lg form-control-solid" name="stock" type="text" value="<?= isset($currentProduct['stock']) ? $currentProduct['stock'] : '' ?>" />
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 col-form-label">Alerte stock mini *</label>
+														<label class="col-xl-3 col-lg-3 col-form-label">Alerte stock mini <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
 															<input class="form-control form-control-lg form-control-solid" name="stock_mini" type="text" value="<?= isset($currentProduct['stock_mini']) ? $currentProduct['stock_mini'] : '' ?>" />
 														</div>
@@ -242,7 +242,7 @@ $title = 'Ajouter un produit'; ?>
 															<span class="switch switch-lg switch-icon">
 																<label>
 																	<input type="hidden" name="status" value="0" />
-																	<input type="checkbox" name="status" value="1" <?= isset($currentUser['status']) && $currentProduct['status'] == '1' ? 'checked' : '' ?>>
+																	<input type="checkbox" name="status" value="1" <?= isset($currentProduct['status']) && $currentProduct['status'] == '1' ? 'checked' : '' ?>>
 																	<span></span>
 																</label>
 															</span>
@@ -300,6 +300,7 @@ $title = 'Ajouter un produit'; ?>
 										</div>
 										<!--end::Step 4-->
 										<!--begin::Actions-->
+
 										<div class="d-flex justify-content-between border-top mt-5 pt-10">
 											<div class="mr-2">
 												<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Précédent</button>
@@ -307,6 +308,7 @@ $title = 'Ajouter un produit'; ?>
 											<div>
 												<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Valider</button>
 												<button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Suivant</button>
+												<span class="d-block mt-2"><sup class="text-danger">*</sup> <small>Champs requis</small></span>
 											</div>
 										</div>
 										<!--end::Actions-->

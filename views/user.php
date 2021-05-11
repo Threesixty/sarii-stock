@@ -25,7 +25,7 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 					</div>
 					<div class="card-body p-5">
 
-						<form class="form" method="post">
+						<form id="kt_user_form" class="form" method="post">
 							<?php
 							if (null !== $currentUser) { ?>
 								<input type="hidden" name="id" value="<?= $currentUser['id'] ?>">
@@ -34,37 +34,37 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 							<input type="hidden" name="status" value="<?= isset($currentUser['status']) ? $currentUser['status'] : 0 ?>">
 
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Identifiant</label>
+								<label class="col-sm-2 col-form-label">Identifiant <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="text" name="username" class="form-control" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'data-toggle="tooltip" data-placement="left" data-theme="dark" title="L‘identifiant ne peut être modifié" disabled' : '' ?>>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Mot de passe</label>
+								<label class="col-sm-2 col-form-label">Mot de passe <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Prénom</label>
+								<label class="col-sm-2 col-form-label">Prénom <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="text" name="firstname" class="form-control" placeholder="Prénom" value="<?= isset($currentUser['firstname']) ? $currentUser['firstname'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Nom</label>
+								<label class="col-sm-2 col-form-label">Nom <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="text" name="lastname" class="form-control" placeholder="Nom" value="<?= isset($currentUser['lastname']) ? $currentUser['lastname'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Email</label>
+								<label class="col-sm-2 col-form-label">Email <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="email" name="email" class="form-control" placeholder="Email" value="<?= isset($currentUser['email']) ? $currentUser['email'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Rôle</label>
+								<label class="col-sm-2 col-form-label">Rôle <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<select class="form-control" id="kt_select2_1" name="role" required="">
 										<option></option>
@@ -90,10 +90,10 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 							</div>
 							<div class="card-footer">
 								<div class="row">
-									<div class="col-sm-2 col-form-label"></div>
+									<div class="col-sm-2 col-form-label"><sup class="text-danger">*</sup> <small>Champs requis</small></div>
 									<div class="col-sm-10">
 										<button type="reset" class="btn btn-secondary">Annuler</button>
-										<button type="submit" class="btn btn-success mr-2">Valider</button>
+										<button id="kt_user_submit" type="submit" class="btn btn-success mr-2">Valider</button>
 									</div>
 								</div>
 							</div>

@@ -313,6 +313,92 @@ var KTApp = function() {
 			return false;
     	});
 
+    };
+
+    var initFormValidation = function() {
+
+        var validation;
+
+        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+        validation = FormValidation.formValidation(
+			KTUtil.getById('kt_user_form'),
+			{
+				fields: {
+					username: {
+						validators: {
+							notEmpty: {
+								message: 'L‘identifiant est requis'
+							}
+						}
+					},
+					password: {
+						validators: {
+							notEmpty: {
+								message: 'Le mot de passe est requis'
+							}
+						}
+					},
+					firstname: {
+						validators: {
+							notEmpty: {
+								message: 'Le prénom est requis'
+							}
+						}
+					},
+					lastname: {
+						validators: {
+							notEmpty: {
+								message: 'Le nom est requis'
+							}
+						}
+					},
+					email: {
+						validators: {
+							notEmpty: {
+								message: 'L‘email est requis'
+							}
+						}
+					},
+					role: {
+						validators: {
+							notEmpty: {
+								message: 'Le rôle est requis'
+							}
+						}
+					},
+				},
+				plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+					bootstrap: new FormValidation.plugins.Bootstrap()
+				}
+			}
+		);
+
+        // Handle submit button
+        $('#kt_user_submit').on('click', function (e) {
+            e.preventDefault();
+            var currentForm = $(this).closest('form');
+
+            validation.validate().then(function(status) {
+		        if (status != 'Valid') {
+					swal.fire({
+		                text: "Attention ! Il semblerait que certains champs requis n'aient pas été renseignés.",
+		                icon: "error",
+		                buttonsStyling: false,
+		                confirmButtonText: "C'est compris",
+                        customClass: {
+    						confirmButton: "btn font-weight-bold btn-light-primary"
+    					}
+		            }).then(function() {
+						KTUtil.scrollTop();
+					});
+				} else {
+					currentForm.submit();
+				}
+		    });
+        });
     }
 
     return {
@@ -338,6 +424,7 @@ var KTApp = function() {
             initModalStock();
             initShowHistory();
             initModalBarcode();
+            initFormValidation();
         },
 
         initTooltips: function() {
