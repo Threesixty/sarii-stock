@@ -122,7 +122,9 @@ class Helper {
 	public static function getBarcodeImg($reference) {
 
 		$generator = new Picqer\Barcode\BarcodeGeneratorPNG();
-		return base64_encode($generator->getBarcode($reference, $generator::TYPE_CODE_39, 2, 100));
+		$barcode = $generator->getBarcode($reference, $generator::TYPE_CODE_39, 2, 100);
+
+		return base64_encode($barcode);
 	}
 }
 

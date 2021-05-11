@@ -64,7 +64,11 @@ $title = 'Liste des produits'; ?>
 											<td class="product-name"><a href="<?= Helper::getUrl('produit', ['id' => $product->id]) ?>" class="font-weight-bolder"><?= $product->name ?></a></td>
 											<td style="white-space: nowrap;">
 												<?= $product->reference ?>
-												<a href="javascript:void(0)" class="ml-1 show-barcode" data-img="data:image/png;base64,<?= Helper::getBarcodeImg($product->reference) ?>"><i class="fa fa-eye"></i></a></td>
+												<?php
+												if (intval(phpversion()) >= 7) { ?>
+													<a href="javascript:void(0)" class="ml-1 show-barcode" data-img="data:image/png;base64,<?= Helper::getBarcodeImg($product->reference) ?>"><i class="fa fa-eye"></i></a>
+												<?php } ?>
+											</td>
 											<td><?= $product->category_id ?></td>
 											<td><?= $product->supplier ?></td>
 											<td><span class="label label-xl font-weight-boldest label-light-<?= $stockColor ?> label-inline"><?= $product->stock > 0 ? $product->stock : 'Rupture' ?></span></td>
