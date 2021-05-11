@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  Dim 11 avr. 2021 à 15:40
+-- Généré le :  mar. 11 mai 2021 à 18:51
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.2.13
 
@@ -58,7 +58,8 @@ INSERT INTO `history` (`id`, `id_product`, `id_user`, `operation`, `value`, `cre
 (23, 17, 11, 'dec', 1, 1617718693),
 (24, 40, 11, 'inc', 4, 1617718709),
 (25, 16, 11, 'inc', 1, 1617718765),
-(26, 40, 11, 'dec', 4, 1617718813);
+(26, 40, 11, 'dec', 4, 1617718813),
+(27, 0, 0, '', 0, 1620750176);
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,7 @@ INSERT INTO `product` (`id`, `name`, `reference`, `supplier`, `category_id`, `de
 (14, 'Module logique Schneider Electric, série Zelio Logic, 12 entrées, 8 sorties, Relais', 'SR2B201BD', 'Schneider Electric', 1, '', 5, 1, 1, 1615681435),
 (15, 'Module logique Schneider Electric, série Zelio Logic, 12 entrées, 8 sorties, Relais', 'SR2B201FU', 'Schneider Electric', 1, '', 5, 1, 1, 1615681435),
 (16, 'Unité centrale Siemens, série S7-1200, 14 (entrées numériques, 2 switchs comme entrées analogiques) entrées, 10', '6ES7214-1AG40-0XB0', 'Siemens', 1, '', 6, 1, 1, 1615681435),
-(17, 'Unité centrale Siemens, série S7-300, 28 (24 numériques, 4 analogiques) entrées, 18 (16 numériques, 2 analogiques)', '6ES7314-6CH04-0AB0', 'Siemens', 1, '', 4, 1, 1, 1615681435),
+(17, 'Unité centrale Siemens, série S7-300, 28 (24 numériques, 4 analogiques) entrées, 18 (16 numériques, 2 analogiques)', '6ES7314-6CH04-0AB0', 'Siemens', 1, '', 4, 1, 0, 1615681435),
 (18, 'Module logique Crouzet, série Millenium 3, 16 entrées, 10 sorties, Relais', '88970161', 'Crouzet', 1, '', 5, 1, 1, 1615681435),
 (19, 'Module logique Schneider Electric, série Zelio Logic, 8 entrées, 4 sorties, Relais', 'SR2B121JD', 'Schneider Electric', 1, '', 5, 1, 1, 1615681435),
 (20, 'Module logique Schneider Electric, série Twido, 24 entrées, 16 sorties, Relais, transistor', 'TWDLCAE40DRF', 'Schneider Electric', 1, '', 5, 1, 1, 1615681435),
@@ -215,7 +216,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `password_token`, `lastname`, `firstname`, `email`, `role`, `status`, `created_at`) VALUES
 (11, '360', '7413a1637a24014d2b7d753d4ed4af3fc2a1225b', '', 'THOMAS', 'Michael', 'michael.convergence@gmail.com', 3, 1, 1613333912),
-(34, 'mit', 'faf0c8235614652735a56cbd00457c3995e6d35a', NULL, 'El Ouadah', 'Yanis', 'info@osborne.fr', 2, 0, 1613425652);
+(34, 'mit', 'faf0c8235614652735a56cbd00457c3995e6d35a', NULL, 'El Ouadah', 'Yanis', 'info@osborne.fr', 2, 0, 1613425652),
+(39, 'afrone', 'Mua@2019', NULL, 'Duponts', 'Jean', 'johndoe@yopmail.com', 2, 1, 1620746924);
 
 --
 -- Index pour les tables déchargées
@@ -262,7 +264,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `product`
@@ -274,7 +276,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
