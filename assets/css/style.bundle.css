@@ -86175,6 +86175,17 @@ span.select2 {
 	font-weight: 900;
 }
 
+.barcode i {
+	font-size: 20px;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.barcode:hover i {
+  color: #3699FF;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+
 select.is-invalid + span.select2 {
 	border: solid 1px #f00;
 	border-radius: 7px;

@@ -63,7 +63,7 @@ $title = 'Liste des produits'; ?>
 										<tr class="<?= $product->status == 0 ? 'bg-dark-o-20' : '' ?>">
 											<td class="m-3">#<?= $product->id ?></td>
 											<td class="product-name"><a href="<?= Helper::getUrl('produit', ['id' => $product->id]) ?>" class="font-weight-bolder"><?= $product->name ?></a></td>
-											<td style="white-space: nowrap;">
+											<td class="barcode" style="white-space: nowrap;">
 												<?= $product->reference ?>
 												<?php
 												if (intval(phpversion()) >= 7) { ?>

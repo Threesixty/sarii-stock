@@ -36,10 +36,10 @@ $title = 'Liste des familles de produit'; ?>
 						<table class="table table-separate table-head-custom table-checkable table-responsive" id="kt_datatable_category">
 							<thead>
 								<tr>
-									<th>ID</th>
-									<th>Nom</th>
-									<th>Date de création</th>
-									<th>Actions</th>
+									<th style="width: 5%">ID</th>
+									<th style="width: 65%">Nom</th>
+									<th style="width: 20%">Date de création</th>
+									<th style="width: 10%">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
