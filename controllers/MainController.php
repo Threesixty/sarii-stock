@@ -27,9 +27,9 @@ class MainController {
 		$route = Helper::getRoute($this->_config);
 
 		if ($route) {
-
+			$db = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ? 'db' : 'dbProd';
 			$this->_db = new Database();
-			$this->_dbConn = $this->_db->init($this->_config['db']);
+			$this->_dbConn = $this->_db->init($this->_config[$db]);
 			if (!property_exists($this->_dbConn, 'status')) {
 
 				$this->render($route);
@@ -407,12 +407,6 @@ class MainController {
 		
 		if (isset($_GET['id'])) {
 			$params['currentUser'] = $user->findBy('id', $_GET['id']);
-			if (isset($_GET['status'])) {
-				$params['notifications'] = [
-						'status' => 'success',
-						'msg' => 'L‘utilisateur a bien été sauvegardé',
-					];
-			}
 		}
 
 		if (!empty($_POST)) {
