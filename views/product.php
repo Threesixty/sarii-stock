@@ -242,7 +242,7 @@ $title = 'Ajouter un produit'; ?>
 															<span class="switch switch-lg switch-icon">
 																<label>
 																	<input type="hidden" name="status" value="0" />
-																	<input type="checkbox" name="status" value="1" <?= $currentProduct['status'] == '1' ? 'checked' : '' ?>>
+																	<input type="checkbox" name="status" value="1" <?= isset($currentUser['status']) && $currentProduct['status'] == '1' ? 'checked' : '' ?>>
 																	<span></span>
 																</label>
 															</span>

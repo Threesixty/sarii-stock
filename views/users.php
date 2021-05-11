@@ -69,7 +69,7 @@ $title = 'Liste des utilisateurs'; ?>
 												<a href="<?= Helper::getUrl('utilisateur', ['id' => $currentUser->id]) ?>" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" title="Éditer">
 													<i class="icon-xl la la-edit"></i>
 												</a>
-												<a href="<?= Helper::getUrl('utilisateurs', ['del' => $user->id]) ?>" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" data-placement="right" title="Supprimer">
+												<a href="<?= Helper::getUrl('utilisateurs', ['del' => $currentUser->id]) ?>" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" data-placement="right" title="Supprimer">
 													<i class="icon-xl la la-trash"></i>
 												</a>
 											</td>
