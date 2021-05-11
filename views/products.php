@@ -52,6 +52,7 @@ $title = 'Liste des produits'; ?>
 								if (null !== $products) {
 									foreach ($products as $key => $product) {
 										$product = (object) $product;
+										$category = (object) $params['category']->findBy('id', $product->category_id);
 
 										$stockColor = 'primary';
 										if (intval($product->stock) <= 0)
@@ -69,7 +70,7 @@ $title = 'Liste des produits'; ?>
 													<a href="javascript:void(0)" class="ml-1 show-barcode" data-img="data:image/png;base64,<?= Helper::getBarcodeImg($product->reference) ?>"><i class="fa fa-eye"></i></a>
 												<?php } ?>
 											</td>
-											<td><?= $product->category_id ?></td>
+											<td><?= $category->name ?></td>
 											<td><?= $product->supplier ?></td>
 											<td><span class="label label-xl font-weight-boldest label-light-<?= $stockColor ?> label-inline"><?= $product->stock > 0 ? $product->stock : 'Rupture' ?></span></td>
 											<td><span class="label label-lg font-weight-bold label-light-<?= $product->status == 1 ? 'success' : 'danger' ?> label-inline"><?= $product->status == 1 ? 'Actif' : 'Désactivé' ?></span></td>

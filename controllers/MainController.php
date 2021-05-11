@@ -6,6 +6,7 @@ require_once('components/Helper.php');
 require_once('models/User.php');
 require_once('models/Product.php');
 require_once('models/History.php');
+require_once('models/Category.php');
 
 class MainController {
 
@@ -108,6 +109,12 @@ class MainController {
 				break;
 			case 'utilisateurs':
 				$params = $this->users();
+				break;
+			case 'categorie':
+				$params = $this->category();
+				break;
+			case 'categories':
+				$params = $this->categories();
 				break;
 			case 'historiqueUtilisateur':
 				echo $this->getUserHistory();
@@ -306,6 +313,7 @@ class MainController {
 		}
 
 		$params['products'] = $product->getProducts();
+		$params['category'] = new Category($this->_dbConn);
 
 		return $params;
 	}
@@ -434,6 +442,54 @@ class MainController {
 
 		return $params;
 	}
+
+	private function categories() {
+
+		$params = [];
+		$category = new Category($this->_dbConn);
+		if (isset($_GET['del'])) {
+
+			$params['notifications'] = $category->delete($_GET['del']);
+		}
+
+		$params['categories'] = $category->getCategories();
+
+		return $params;
+	}
+
+	private function category() {
+
+		$params = [];
+		$category = new Category($this->_dbConn);
+		
+		if (isset($_GET['id'])) {
+			$params['currentCategory'] = $category->findBy('id', $_GET['id']);
+			if (isset($_GET['status'])) {
+				$params['notifications'] = [
+						'status' => 'success',
+						'msg' => 'Le produit a bien été sauvegardé',
+					];
+			}
+		}
+
+		if (!empty($_POST)) {
+			$params['currentCategory'] = $_POST;
+			if ($params['notifications'] = $category->save($_POST)) {
+				if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
+					header('location:'.Helper::getUrl('categorie', ['id' => $params['notifications']['id'], 'status' => 'new']));
+					exit(0);
+				}
+			} else {
+				$params['notifications'] = [
+						'status' => 'error',
+						'msg' => 'Un problème est survenue lors de l‘enregistrement de la demande. Veuillez contacter l‘administrateur du site',
+					];
+			}
+		}
+
+		return $params;
+	}
+
 }
 
 ?>

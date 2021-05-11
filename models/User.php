@@ -62,10 +62,10 @@ class User {
 
 			return $res ? [
 						'status' => 'success',
-						'msg' => 'l‘utilisateur a bien été supprimé.',
+						'msg' => 'L‘utilisateur a bien été supprimé.',
 					] : [
 						'status' => 'error',
-						'msg' => 'Une erreur s‘est produite lors de l‘enregistrement de l‘l‘utilisateur. Veuillez contacter l‘administrateur du site',
+						'msg' => 'Une erreur s‘est produite lors de l‘enregistrement de l‘utilisateur. Veuillez contacter l‘administrateur du site',
 					];
 
 		} catch(PDOException $e) {

@@ -34,37 +34,37 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 							<input type="hidden" name="status" value="<?= isset($currentUser['status']) ? $currentUser['status'] : 0 ?>">
 
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Identifiant <sup class="text-danger">*</sup></label>
+								<label class="col-sm-2 col-form-label text-right">Identifiant <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="text" name="username" class="form-control" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'data-toggle="tooltip" data-placement="left" data-theme="dark" title="L‘identifiant ne peut être modifié" disabled' : '' ?>>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Mot de passe <sup class="text-danger">*</sup></label>
+								<label class="col-sm-2 col-form-label text-right">Mot de passe <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Prénom <sup class="text-danger">*</sup></label>
+								<label class="col-sm-2 col-form-label text-right">Prénom <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="text" name="firstname" class="form-control" placeholder="Prénom" value="<?= isset($currentUser['firstname']) ? $currentUser['firstname'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Nom <sup class="text-danger">*</sup></label>
+								<label class="col-sm-2 col-form-label text-right">Nom <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="text" name="lastname" class="form-control" placeholder="Nom" value="<?= isset($currentUser['lastname']) ? $currentUser['lastname'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Email <sup class="text-danger">*</sup></label>
+								<label class="col-sm-2 col-form-label text-right">Email <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<input type="email" name="email" class="form-control" placeholder="Email" value="<?= isset($currentUser['email']) ? $currentUser['email'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Rôle <sup class="text-danger">*</sup></label>
+								<label class="col-sm-2 col-form-label text-right">Rôle <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
 									<select class="form-control" id="kt_select2_1" name="role" required="">
 										<option></option>
@@ -77,7 +77,7 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-2 col-form-label">Statut</label>
+								<label class="col-sm-2 col-form-label text-right">Statut</label>
 								<div class="col-sm-10">
 									<span class="switch">
 										<label>

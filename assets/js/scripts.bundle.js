@@ -315,91 +315,150 @@ var KTApp = function() {
 
     };
 
-    var initFormValidation = function() {
+    var initUserFormValidation = function() {
 
-        var validation;
+    	if ($('#kt_user_form').length) {
 
-        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-        validation = FormValidation.formValidation(
-			KTUtil.getById('kt_user_form'),
-			{
-				fields: {
-					username: {
-						validators: {
-							notEmpty: {
-								message: 'L‘identifiant est requis'
+	        var validation;
+
+	        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+	        validation = FormValidation.formValidation(
+				KTUtil.getById('kt_user_form'),
+				{
+					fields: {
+						username: {
+							validators: {
+								notEmpty: {
+									message: 'L‘identifiant est requis'
+								}
 							}
-						}
-					},
-					password: {
-						validators: {
-							notEmpty: {
-								message: 'Le mot de passe est requis'
+						},
+						password: {
+							validators: {
+								notEmpty: {
+									message: 'Le mot de passe est requis'
+								}
 							}
-						}
-					},
-					firstname: {
-						validators: {
-							notEmpty: {
-								message: 'Le prénom est requis'
+						},
+						firstname: {
+							validators: {
+								notEmpty: {
+									message: 'Le prénom est requis'
+								}
 							}
-						}
-					},
-					lastname: {
-						validators: {
-							notEmpty: {
-								message: 'Le nom est requis'
+						},
+						lastname: {
+							validators: {
+								notEmpty: {
+									message: 'Le nom est requis'
+								}
 							}
-						}
-					},
-					email: {
-						validators: {
-							notEmpty: {
-								message: 'L‘email est requis'
+						},
+						email: {
+							validators: {
+								notEmpty: {
+									message: 'L‘email est requis'
+								}
 							}
-						}
-					},
-					role: {
-						validators: {
-							notEmpty: {
-								message: 'Le rôle est requis'
+						},
+						role: {
+							validators: {
+								notEmpty: {
+									message: 'Le rôle est requis'
+								}
 							}
-						}
+						},
 					},
-				},
-				plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    submitButton: new FormValidation.plugins.SubmitButton(),
-                    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
-					bootstrap: new FormValidation.plugins.Bootstrap()
+					plugins: {
+	                    trigger: new FormValidation.plugins.Trigger(),
+	                    submitButton: new FormValidation.plugins.SubmitButton(),
+	                    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+						bootstrap: new FormValidation.plugins.Bootstrap()
+					}
 				}
-			}
-		);
+			);
 
-        // Handle submit button
-        $('#kt_user_submit').on('click', function (e) {
-            e.preventDefault();
-            var currentForm = $(this).closest('form');
+	        // Handle submit button
+	        $('#kt_user_submit').on('click', function (e) {
+	            e.preventDefault();
+	            var currentForm = $(this).closest('form');
 
-            validation.validate().then(function(status) {
-		        if (status != 'Valid') {
-					swal.fire({
-		                text: "Attention ! Il semblerait que certains champs requis n'aient pas été renseignés.",
-		                icon: "error",
-		                buttonsStyling: false,
-		                confirmButtonText: "C'est compris",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
-						KTUtil.scrollTop();
-					});
-				} else {
-					currentForm.submit();
+	            validation.validate().then(function(status) {
+			        if (status != 'Valid') {
+						swal.fire({
+			                text: "Attention ! Il semblerait que certains champs requis n'aient pas été renseignés.",
+			                icon: "error",
+			                buttonsStyling: false,
+			                confirmButtonText: "C'est compris",
+	                        customClass: {
+	    						confirmButton: "btn font-weight-bold btn-light-primary"
+	    					}
+			            }).then(function() {
+							KTUtil.scrollTop();
+						});
+					} else {
+						currentForm.submit();
+					}
+			    });
+	        });
+
+	    }
+    };
+
+    var initCategoryFormValidation = function() {
+
+    	if ($('#kt_category_form').length) {
+
+	        var validation;
+
+	        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+	        validation = FormValidation.formValidation(
+				KTUtil.getById('kt_category_form'),
+				{
+					fields: {
+						name: {
+							validators: {
+								notEmpty: {
+									message: 'Le nom de la famille de produit est requis'
+								}
+							}
+						},
+					},
+					plugins: {
+	                    trigger: new FormValidation.plugins.Trigger(),
+	                    submitButton: new FormValidation.plugins.SubmitButton(),
+	                    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+						bootstrap: new FormValidation.plugins.Bootstrap()
+					}
 				}
-		    });
-        });
-    }
+			);
+
+	        // Handle submit button
+	        $('#kt_category_submit').on('click', function (e) {
+	            e.preventDefault();
+	            var currentForm = $(this).closest('form');
+
+	            validation.validate().then(function(status) {
+			        if (status != 'Valid') {
+						swal.fire({
+			                text: "Attention ! Il semblerait que certains champs requis n'aient pas été renseignés.",
+			                icon: "error",
+			                buttonsStyling: false,
+			                confirmButtonText: "C'est compris",
+	                        customClass: {
+	    						confirmButton: "btn font-weight-bold btn-light-primary"
+	    					}
+			            }).then(function() {
+							KTUtil.scrollTop();
+						});
+					} else {
+						currentForm.submit();
+					}
+			    });
+	        });
+
+	    }
+    };
 
     return {
         init: function(settingsArray) {
@@ -424,7 +483,8 @@ var KTApp = function() {
             initModalStock();
             initShowHistory();
             initModalBarcode();
-            initFormValidation();
+            initUserFormValidation();
+            initCategoryFormValidation();
         },
 
         initTooltips: function() {

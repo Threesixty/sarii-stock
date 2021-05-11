@@ -209,6 +209,14 @@ require_once('components/Helper.php'); ?>
 													<span class="menu-text">Catégories produit</span>
 												</a>
 											</li>
+											<li class="menu-item <?= $route == 'categorie' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+												<a href="<?= Helper::getUrl('categorie') ?>" class="menu-link">
+													<i class="menu-bullet menu-bullet-dot">
+														<span></span>
+													</i>
+													<span class="menu-text">Ajouter une famille produit</span>
+												</a>
+											</li>
 										</ul>
 									</div>
 								</li>

@@ -55,7 +55,7 @@ $title = 'Liste des utilisateurs'; ?>
 
 										<tr class="<?= $currentUser->status == 0 ? 'bg-dark-o-20' : '' ?>">
 											<td class="m-3 border-left-3 border-left-<?= Helper::getRoleName($currentUser->role, true) ?>">#<?= $currentUser->id ?></td>
-											<td><a href="<?= Helper::getUrl('utilisateur', ['id' => $currentUser->id]) ?>" class="font-weight-bolder"><?= $currentUser-> username ?></a></td>
+											<td><a href="<?= Helper::getUrl('utilisateur', ['id' => $currentUser->id]) ?>" class="font-weight-bolder"><?= $currentUser->username ?></a></td>
 											<td><?= $currentUser->email ?></td>
 											<td><?= strtoupper($currentUser->lastname) ?></td>
 											<td><?= ucwords($currentUser->firstname) ?></td>

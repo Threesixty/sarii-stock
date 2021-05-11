@@ -81,6 +81,11 @@ $config = [
 			'view' => 'categories',
 			'auth' => true,
 		],
+		'categorie' => [
+			'layout' => true,
+			'view' => 'category',
+			'auth' => true,
+		],
 	],
 ];
 ?>

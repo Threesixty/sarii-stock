@@ -2,7 +2,6 @@
 var KTDatatablesAdvancedMultipleControls = function() {
 
 	var init = function() {
-		var table = $('#kt_datatable_product');
 
         var language = {
                 "sProcessing":     "Traitement en cours...",
@@ -34,8 +33,7 @@ var KTDatatablesAdvancedMultipleControls = function() {
                 }
             };
 
-		// begin first table
-		table.DataTable({
+		$('#kt_datatable_product').DataTable({
 			// DOM Layout settings
 			dom:
 				"<'row py-3'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
@@ -46,6 +44,23 @@ var KTDatatablesAdvancedMultipleControls = function() {
 			columnDefs: [
                 { "orderable": false, "targets": [8] },
                 { "searchable": false, "targets": [8] }
+			],
+            order: [[ 1, "desc" ]],
+            pageLength: 25,
+            language: language
+		});
+
+		$('#kt_datatable_category').DataTable({
+			// DOM Layout settings
+			dom:
+				"<'row py-3'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+				"<'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6'p>>" +
+				"<'row py-3'<'col-sm-12'tr>>" +
+				"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>", // read more: https://datatables.net/examples/basic_init/dom.html
+
+			columnDefs: [
+                { "orderable": false, "targets": [3] },
+                { "searchable": false, "targets": [3] }
 			],
             order: [[ 1, "desc" ]],
             pageLength: 25,

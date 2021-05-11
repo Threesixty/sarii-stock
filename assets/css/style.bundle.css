@@ -86112,7 +86112,8 @@ body {
   }
 
   .subheader.subheader-solid {
-    margin-bottom: 15px;
+  	margin-bottom: 30px;
+	padding: 0 !important;
   }
 }
 @media (min-width: 992px) {
