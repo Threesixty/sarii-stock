@@ -2637,7 +2637,7 @@ pre code {
     border: 0;
   }
   #kt_login .bg-mobile {
-  	background-position: top right;
+  	background-position: top center;
 	background-size: auto;
   }
 }
