@@ -86190,3 +86190,8 @@ select.is-invalid + span.select2 {
 	border: solid 1px #f00;
 	border-radius: 7px;
 }
+
+select.is-valid + span.select2 {
+	border: solid 1px #1BC5BD;
+	border-radius: 7px;
+}

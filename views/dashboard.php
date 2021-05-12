@@ -39,7 +39,6 @@ $title = 'Tableau de bord'; ?>
 										<li class="text-info text-uppercase">Admin</li>
 									</ul>
 									<p class="text-muted font-size-md mb-5">Chaque profil dispose de droits spécifiques.</p>
-									<a href="<?= Helper::getUrl('produits') ?>" class="btn btn-primary font-weight-bold px-6 py-3 mt-5">Commencer</a>
 								</div>
 							</div>
 							<!--end::Body-->

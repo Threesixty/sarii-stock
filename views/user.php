@@ -29,14 +29,13 @@ $title = null !== $currentUser ? $currentUser['firstname'].' '.$currentUser['las
 							<?php
 							if (null !== $currentUser) { ?>
 								<input type="hidden" name="id" value="<?= $currentUser['id'] ?>">
-								<input type="hidden" name="username" value="<?= $currentUser['username'] ?>">
 							<?php } ?>
 							<input type="hidden" name="status" value="<?= isset($currentUser['status']) ? $currentUser['status'] : 0 ?>">
 
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label text-right">Identifiant <sup class="text-danger">*</sup></label>
 								<div class="col-sm-10">
-									<input type="text" name="username" class="form-control" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'data-toggle="tooltip" data-placement="left" data-theme="dark" title="L‘identifiant ne peut être modifié" disabled' : '' ?>>
+									<input type="text" name="username" class="form-control<?= null !== $currentUser ? '-plaintext' : '' ?>" placeholder="Identifiant" value="<?= isset($currentUser['username']) ? $currentUser['username'] : '' ?>" required <?= null !== $currentUser ? 'data-toggle="tooltip" data-placement="left" data-theme="dark" title="L‘identifiant ne peut être modifié"' : '' ?>>
 								</div>
 							</div>
 							<div class="form-group row">
