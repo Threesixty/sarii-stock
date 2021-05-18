@@ -222,10 +222,9 @@ require_once('components/Helper.php'); ?>
 										</ul>
 									</div>
 								</li>
-								<li class="menu-item <?= strpos($route, 'parametres') !== false ? 'menu-item-open menu-item-here' : '' ?>">
+								<!--li class="menu-item <?= strpos($route, 'parametres') !== false ? 'menu-item-open menu-item-here' : '' ?>">
 									<a href="javascript:;" class="menu-link">
 										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											        <rect x="0" y="0" width="24" height="24"/>
@@ -233,11 +232,10 @@ require_once('components/Helper.php'); ?>
 											        <path d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z" fill="#000000" opacity="0.3"/>
 											    </g>
 											</svg>
-											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-text">Paramètres</span>
 									</a>
-								</li>
+								</li-->
 							</ul>
 							<!--end::Menu Nav-->
 						</div>

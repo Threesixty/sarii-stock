@@ -432,7 +432,7 @@ class MainController {
 						'msg' => 'L‘identifiant utilisateur saisie est déjà utilisé',
 					];
 			} else {
-				if ($params['notifications'] = $user->save($_POST, false, false, true)) {
+				if ($params['notifications'] = $user->save($_POST, true, false, true)) {
 					if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
 						header('location:'.Helper::getUrl('utilisateur', ['id' => $params['notifications']['id'], 'status' => 'new']));
 						exit(0);
