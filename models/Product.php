@@ -81,7 +81,7 @@ class Product {
 
     public function save($product, $type = null) {
 
-    	$updatePhoto = '';
+    	$updatePhoto = $cleanFilename = '';
 		if (!empty($_FILES)) {
 			$cleanFilename = time().'_'.Helper::cleanFilename($_FILES['photo']['name']);
 			$fileUploaded = move_uploaded_file($_FILES['photo']['tmp_name'], 'medias/'.$cleanFilename);

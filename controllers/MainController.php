@@ -259,7 +259,8 @@ class MainController {
 		$params = [];
 		$history = new History($this->_dbConn);
 
-		$params['histories'] = Helper::getDashboardHistory($history->getHistories(), $this->_dbConn);
+		$params['histories'] = Helper::getDashboardHistory($history->getHistories(20), $this->_dbConn);
+		$params['charts'] = Helper::getDashboardChart($history->getHistories(false, 'ASC'), $this->_dbConn);
 
 		return $params;
 	}

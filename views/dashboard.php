@@ -109,7 +109,7 @@ $title = 'Tableau de bord'; ?>
 							</div>
 							<div class="card-body">
 								<!--begin::Chart-->
-								<div id="chart_2"></div>
+								<div id="chart_2" data-values='<?= json_encode($params['charts']) ?>'></div>
 								<!--end::Chart-->
 							</div>
 						</div>

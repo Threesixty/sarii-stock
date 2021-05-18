@@ -91,6 +91,18 @@ class Helper {
 		return $cleanHistories;
 	}
 
+	public static function getDashboardChart($histories, $db) {
+
+		$chartHistories = [];
+		if (!empty($histories)) {
+			foreach ($histories as $key => $history) {
+				$chartHistories[$history['operation']][strftime('%B %Y', $history['created_at'])] = isset($chartHistories[$history['operation']][strftime('%B %Y', $history['created_at'])]) ? $chartHistories[$history['operation']][strftime('%B %Y', $history['created_at'])] + $history['value'] : $history['value'];
+			}
+		}
+
+		return $chartHistories;
+	}
+
 	public static function sendMail($config, $mailContent) {
 
 		$mail = new PHPMailer\PHPMailer\PHPMailer(true);

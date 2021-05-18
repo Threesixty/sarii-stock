@@ -34,9 +34,11 @@ class History {
 		}
 	}
 
-	public function getHistories() {
+	public function getHistories($limit = false, $order = 'DESC') {
 
-		$sql = 'SELECT * FROM history ORDER BY created_at DESC';
+		$sql = 'SELECT * FROM history ORDER BY created_at '.$order;
+		if ($limit)
+			$sql .= ' LIMIT '.$limit;
 
 		try {
 			$res = $this->_conn->query($sql);

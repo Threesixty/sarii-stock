@@ -79,41 +79,57 @@ var KTApexChartsDemo = function () {
 
 	var _demo2 = function () {
 		const apexChart = "#chart_2";
-		var options = {
-			series: [{
-				name: 'Approvisionnemment',
-				data: [31, 40, 28, 51, 42, 109, 100]
-			}, {
-				name: 'Expédition',
-				data: [11, 32, 45, 32, 34, 52, 41]
-			}],
-			chart: {
-				height: 350,
-				type: 'area'
-			},
-			dataLabels: {
-				enabled: false
-			},
-			legend: {
-				position: 'bottom'
-			},
-			stroke: {
-				curve: 'smooth'
-			},
-			xaxis: {
-				type: 'datetime',
-				categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-			},
-			tooltip: {
-				x: {
-					format: 'dd/MM/yy HH:mm'
-				},
-			},
-			colors: [primary, warning]
-		};
 
-		var chart = new ApexCharts(document.querySelector(apexChart), options);
-		chart.render();
+		if ($(apexChart).length) {
+			var values = $(apexChart).data('values');
+			var keysDec = Object.keys(values.dec);
+			var keysInc = Object.keys(values.inc);
+
+			var dates = keysDec.concat(keysInc);
+			dates = dates.filter(onlyUnique);
+			console.log(Object.values(values.inc));
+			console.log(Object.values(values.dec));
+			console.log(dates);
+
+			var options = {
+				series: [{
+					name: 'Approvisionnemment',
+					data: Object.values(values.inc)
+				}, {
+					name: 'Expédition',
+					data: Object.values(values.dec)
+				}],
+				chart: {
+					height: 350,
+					type: 'area'
+				},
+				dataLabels: {
+					enabled: false
+				},
+				legend: {
+					position: 'bottom'
+				},
+				stroke: {
+					curve: 'smooth'
+				},
+				xaxis: {
+					type: 'date',
+					categories: dates,
+				},
+				tooltip: {
+					x: {
+						format: 'MM/yy'
+					},
+				},
+				colors: [primary, warning]
+			};
+
+			var chart = new ApexCharts(document.querySelector(apexChart), options);
+			chart.render();
+		}
+	}
+	function onlyUnique(value, index, self) {
+		return self.indexOf(value) === index;
 	}
 
 	var _demo3 = function () {
