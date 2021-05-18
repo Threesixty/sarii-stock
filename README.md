@@ -6,7 +6,7 @@ SARII-Stock est une application de gestion de stock de matériel électrique et 
 
 Elle permet de saisir des produits et d'y effectuer des opérations de stockage-destockage.
 
-Chaque opération est horodatée puis enregistrée afin d'obtenir un suivi efficace des mouvements. L'historique est disponible pour chaque produit directement sur la page de listing en cliquant sur l'icône
+Chaque opération est horodatée puis enregistrée afin d'obtenir un suivi efficace des mouvements. L'historique est disponible pour chaque produit directement sur la page de listing en cliquant sur l'icône du petit camion.
 
 Il existe 3 profils utilisateur :
 
