@@ -149,7 +149,7 @@ $title = 'Ajouter un produit'; ?>
 							<div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
 								<div class="col-xl-12 col-xxl-7">
 									<!--begin::Form Wizard-->
-									<form class="form" id="kt_projects_add_form" method="post">
+									<form class="form" id="kt_projects_add_form" method="post" enctype="multipart/form-data">
 										<?php
 										if (isset($_GET['id'])) { ?>
 											<input type="hidden" name="id" value="<?= $_GET['id'] ?>">
@@ -171,6 +171,26 @@ $title = 'Ajouter un produit'; ?>
 														<label class="col-xl-3 col-lg-3 col-form-label">Description</label>
 														<div class="col-lg-9 col-xl-9">
 															<textarea class="form-control form-control-lg form-control-solid" id="kt_autosize_1" rows="3" name="description"><?= isset($currentProduct['name']) ? $currentProduct['description'] : '' ?></textarea>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 col-form-label">Photo du produit</label>
+														<div class="col-lg-9 col-xl-9">
+															<?php
+															$photoUrl = 'assets/media/users/blank.png';
+															if (isset($currentProduct['photo']) && null != $currentProduct['photo']) {
+																$photoUrl = 'medias/'.$currentProduct['photo'];
+															} ?>
+															<div class="image-input image-input-empty image-input-outline" id="kt_image_5" style="background-image: url(<?= $photoUrl ?>)">
+																<div class="image-input-wrapper"></div>
+																<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Modifier la photo">
+																	<i class="fa fa-pen icon-sm text-muted"></i>
+																	<input type="file" name="photo" accept=".png, .jpg, .jpeg" />
+																</label>
+																<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Supprimer">
+																	<i class="ki ki-bold-close icon-xs text-muted"></i>
+																</span>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -268,6 +288,12 @@ $title = 'Ajouter un produit'; ?>
 												<tr>
 													<td class="font-weight-bold text-muted">Description :</td>
 													<td class="font-weight-bold text-right product-description"></td>
+												</tr>
+												<tr>
+													<td class="font-weight-bold text-muted">Photo produit :</td>
+													<td class="font-weight-bold text-right product-photo">
+														<span></span>
+													</td>
 												</tr>
 											</table>
 											<div class="separator separator-dashed my-5"></div>

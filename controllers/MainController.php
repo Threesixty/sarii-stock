@@ -342,7 +342,6 @@ class MainController {
 		
 		if (isset($_GET['id'])) {
 			$params['currentProduct'] = $product->findBy('id', $_GET['id']);
-
 			$category = new Category($this->_dbConn);
 			$params['categories'] = $category->getCategories();
 
@@ -363,7 +362,9 @@ class MainController {
 						'msg' => 'La référence saisie est déjà utilisée',
 					];
 			} else {
+
 				if ($params['notifications'] = $product->save($_POST)) {
+					$params['currentProduct']['photo'] = $params['notifications']['photo'];
 					if (isset($params['notifications']['action']) && $params['notifications']['action'] == 'redirect') {
 						header('location:'.Helper::getUrl('produit', ['id' => $params['notifications']['id'], 'status' => 'new']));
 						exit(0);

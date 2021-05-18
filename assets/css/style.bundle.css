@@ -86195,3 +86195,11 @@ select.is-valid + span.select2 {
 	border: solid 1px #1BC5BD;
 	border-radius: 7px;
 }
+
+.product-photo > span {
+	display: block;
+	width: 120px;
+	height: 120px;
+	background-size: cover;
+	float: right;
+}

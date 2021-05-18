@@ -9,6 +9,7 @@ class Product {
 	public $id;
 	public $name;
 	public $description;
+	public $photo;
 	public $reference;
 	public $supplier;
 	public $category_id;
@@ -80,15 +81,23 @@ class Product {
 
     public function save($product, $type = null) {
 
+    	$updatePhoto = '';
+		if (!empty($_FILES)) {
+			$cleanFilename = time().'_'.Helper::cleanFilename($_FILES['photo']['name']);
+			$fileUploaded = move_uploaded_file($_FILES['photo']['tmp_name'], 'medias/'.$cleanFilename);
+			if ($fileUploaded)
+				$updatePhoto = 'photo = "'.$cleanFilename.'",';
+		}
+
     	$status = isset($_POST['status']) && $_POST['status'] == 1 ? 1 : 0;
 
     	$action = false;
     	if (isset($product['id'])) {
-			$sql = 'UPDATE product SET name = "'.$product['name'].'", description = "'.$product['description'].'", reference = "'.$product['reference'].'", supplier = "'.$product['supplier'].'", category_id = "'.$product['category_id'].'", stock = "'.$product['stock'].'", stock_mini = "'.$product['stock_mini'].'", status = "'.$product['status'].'" WHERE id = '.$product['id'];
+			$sql = 'UPDATE product SET name = "'.$product['name'].'", description = "'.$product['description'].'", '.$updatePhoto.' reference = "'.$product['reference'].'", supplier = "'.$product['supplier'].'", category_id = "'.$product['category_id'].'", stock = "'.$product['stock'].'", stock_mini = "'.$product['stock_mini'].'", status = "'.$product['status'].'" WHERE id = '.$product['id'];
     	} else {
 
     		$action = 'redirect';
-			$sql = 'INSERT INTO product (name, description, reference, category_id, stock, stock_mini, status, created_at) VALUES ("'.$product['name'].'", "'.$product['description'].'", "'.$product['reference'].'", "'.$product['supplier'].'", "'.$product['category_id'].'", "'.$product['stock'].'", "'.$product['stock_mini'].'", '.$product['status'].', "'.time().'")';
+			$sql = 'INSERT INTO product (name, description, photo, reference, category_id, stock, stock_mini, status, created_at) VALUES ("'.$product['name'].'", "'.$product['description'].'", "'.$filename.'", "'.$product['reference'].'", "'.$product['supplier'].'", "'.$product['category_id'].'", "'.$product['stock'].'", "'.$product['stock_mini'].'", '.$product['status'].', "'.time().'")';
     	}
 
 		try {
@@ -110,6 +119,7 @@ class Product {
 						'msg' => $msg,
 						'action' => $action,
 						'id' => $action ? $this->_conn->lastInsertId() : false,
+						'photo' => $cleanFilename,
 					] : [
 						'status' => 'error',
 						'msg' => 'Une erreur s‘est produite lors de l‘enregistrement du produit. Veuillez contacter l‘administrateur du site',

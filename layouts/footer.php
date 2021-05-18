@@ -228,6 +228,7 @@
 		<script src="assets/js/pages/custom/projects/add-project.js"></script>
 		<script src="assets/js/pages/crud/forms/widgets/select2.js"></script>
 		<script src="assets/js/pages/features/charts/apexcharts.js"></script>
+		<script src="assets/js/pages/crud/file-upload/image-input.js"></script>
 	</body>
 	<!--end::Body-->
 </html>
