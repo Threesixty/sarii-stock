@@ -2,7 +2,7 @@
 
 Bienvenue dans {SARII-Stock}
 
-SARII-Stock est une application de gestion de stock de matériel électrique et d'automates développée dans le cadre d'un TP du cursus LP SARII de l'IUT de Toulon.
+SARII-Stock est une application de gestion de stock de matériel électrique et d'automates développée dans le cadre d'un TP SGBD du cursus LP SARII de l'IUT de Toulon.
 
 Elle permet de saisir des produits et d'y effectuer des opérations de stockage-destockage.
 
