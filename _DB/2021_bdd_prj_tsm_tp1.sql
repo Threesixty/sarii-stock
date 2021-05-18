@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 18 mai 2021 à 19:39
+-- Généré le :  mar. 18 mai 2021 à 19:47
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.2.13
 
@@ -232,7 +232,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `password_token`, `lastname`, `firstname`, `email`, `role`, `status`, `created_at`) VALUES
-(11, '360', '7413a1637a24014d2b7d753d4ed4af3fc2a1225b', '', 'THOMAS', 'Michael', 'michael.convergence@gmail.com', 3, 1, 1613333912),
+(11, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', 'THOMAS', 'Michael', 'michael.convergence@gmail.com', 3, 1, 1613333912),
 (34, 'rea', '9f2104e8f86374257270d0eb74ac82c1c7e1ca3c', NULL, 'Osborne', 'Harry', 'info@osborne.fr', 1, 1, 1613425652),
 (39, 'exp', '86b77de2442fe05048f19c766138a551aa2543be', NULL, 'Duponts', 'Jean', 'johndoe@yopmail.com', 2, 1, 1620746924);
 
