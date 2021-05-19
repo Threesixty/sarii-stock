@@ -86,6 +86,7 @@ class User {
 			$sql = 'UPDATE user SET username = "'.$user['username'].'", password = "'.$password.'"'.$passwordToken.', lastname = "'.$user['lastname'].'", firstname = "'.$user['firstname'].'", email = "'.$user['email'].'", role = "'.$user['role'].'", status = "'.$user['status'].'" WHERE id = '.$user['id'];
     	} else {
 
+    		$action = 'redirect';
 			$sql = 'INSERT INTO user (username, password, lastname, firstname, email, role, status, created_at) VALUES ("'.$user['username'].'", "'.sha1($user['password']).'", "'.$user['lastname'].'", "'.$user['firstname'].'", "'.$user['email'].'", 1, 0, "'.time().'")';
     	}
 
@@ -102,6 +103,8 @@ class User {
 				return [
 						'status' => 'success',
 						'msg' => 'L‘utilisateur a bien été sauvegardé',
+						'id' => $action ? $this->_conn->lastInsertId() : false,
+						'action' => $action,
 					];
 			} else {
 				return [

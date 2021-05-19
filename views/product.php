@@ -3,7 +3,7 @@ require_once('components/Widget.php');
 require_once('components/Helper.php');
 
 $currentProduct = isset($params['currentProduct']) ? $params['currentProduct'] : null;
-$categories = isset($params['categories']) ? $params['categories'] : null;
+$categories = isset($params['categories']) ? $params['categories'] : [];
 
 $title = 'Ajouter un produit'; ?>
 

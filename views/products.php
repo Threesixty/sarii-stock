@@ -82,18 +82,25 @@ $title = 'Liste des produits'; ?>
 						                            </a>
 												  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
 														<ul class="nav nav-hoverable flex-column history-parent" data-id="<?= $product->id ?>" data-url="<?= Helper::getUrl('historiqueProduit') ?>">
-												    		<li class="nav-item">
-												    			<a class="nav-link text-hover-primary update-modal-inc" href="javascript:void(0)" data-toggle="modal" data-target="#modalIncStock">
-												    				<i class="nav-icon fas fa-plus"></i>
-												    				<span>Approvisionner</span>
-												    			</a>
-												    		</li>
-												    		<li class="nav-item">
-												    			<a class="nav-link text-hover-warning update-modal-dec" href="javascript:void(0)" data-toggle="modal" data-target="#modalDecStock">
-												    				<i class="nav-icon fas fa-share"></i>
-												    				<span>Expédier</span>
-												    			</a>
-												    		</li>
+
+															<?php
+															if ($user['role'] == 1 || $user['role']== 3) { ?>
+													    		<li class="nav-item">
+													    			<a class="nav-link text-hover-primary update-modal-inc" href="javascript:void(0)" data-toggle="modal" data-target="#modalIncStock">
+													    				<i class="nav-icon fas fa-plus"></i>
+													    				<span>Approvisionner</span>
+													    			</a>
+													    		</li>
+													    	<?php }
+
+															if ($user['role'] == 2 || $user['role']== 3) { ?>
+													    		<li class="nav-item">
+													    			<a class="nav-link text-hover-warning update-modal-dec" href="javascript:void(0)" data-toggle="modal" data-target="#modalDecStock">
+													    				<i class="nav-icon fas fa-share"></i>
+													    				<span>Expédier</span>
+													    			</a>
+													    		</li>
+													    	<?php } ?>
 												    		<li>
 												    			<hr style="margin: 0; border-color: #eee;">
 												    		</li>
