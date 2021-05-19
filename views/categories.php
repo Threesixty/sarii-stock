@@ -49,7 +49,7 @@ $title = 'Liste des familles de produit'; ?>
 										$currentCategory = (object) $currentCategory; ?>
 
 										<tr>
-											<td class="m-3 border-left-3 border-left-<?= Helper::getRoleName($currentCategory->role, true) ?>">#<?= $currentCategory->id ?></td>
+											<td class="m-3 border-left-3">#<?= $currentCategory->id ?></td>
 											<td><a href="<?= Helper::getUrl('categorie', ['id' => $currentCategory->id]) ?>" class="font-weight-bolder"><?= $currentCategory->name ?></a></td>
 											<td data-order="<?= $currentCategory->created_at ?>"><?= strftime('%e %B %Y', $currentCategory->created_at) ?></td>
 											<td nowrap="nowrap" class="history-parent" data-id="<?= $currentCategory->id ?>" data-url="<?= Helper::getUrl('historiquecategorie') ?>">
