@@ -31,7 +31,7 @@ var KTProjectsAdd = function () {
 				$('.product-stock-mini').html($('input[name="stock_mini"]').val());
 				var status = $('input[name="status"]').is(':checked') ? 'Oui' : 'Non';
 				$('.product-status').html(status);
-				var url = $('.image-input-wrapper').attr('style') != undefined ? $('.image-input-wrapper').attr('style') : $('#kt_image_5').attr('style');
+				var url = $('.image-input-wrapper').attr('style') != undefined && $('.image-input-wrapper').attr('style') != 'background-image: none;' ? $('.image-input-wrapper').attr('style') : $('#kt_image_5').attr('style');
 				$('.product-photo span').attr('style', url);
 			}
 
