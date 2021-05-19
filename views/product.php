@@ -246,7 +246,7 @@ $title = 'Ajouter un produit'; ?>
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 col-form-label">Stock actuel <sup class="text-danger">*</sup></label>
 														<div class="col-lg-9 col-xl-9">
-															<input class="form-control form-control-lg form-control-solid" name="stock" type="text" value="<?= isset($currentProduct['stock']) ? $currentProduct['stock'] : '' ?>" />
+															<input class="form-control<?= isset($currentProduct['stock']) && $user['role'] < 3 ? '-plaintext' : '' ?> form-control-lg form-control-solid" name="stock" type="text" value="<?= isset($currentProduct['stock']) ? $currentProduct['stock'] : '' ?>" />
 														</div>
 													</div>
 													<div class="form-group row">

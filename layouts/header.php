@@ -144,84 +144,89 @@ require_once('components/Helper.php'); ?>
 										</ul>
 									</div>
 								</li>
-								<li class="menu-item menu-item-submenu <?= strpos($route, 'utilisateur') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="javascript:;" class="menu-link menu-toggle">
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon-->
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											        <polygon points="0 0 24 0 24 24 0 24"/>
-											        <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-											        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+
+								<?php
+								if ($user['role'] == 3) { ?>
+									<li class="menu-item menu-item-submenu <?= strpos($route, 'utilisateur') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
+										<a href="javascript:;" class="menu-link menu-toggle">
+											<span class="svg-icon menu-icon">
+												<!--begin::Svg Icon-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												        <polygon points="0 0 24 0 24 24 0 24"/>
+												        <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+												        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+												    </g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+											<span class="menu-text">Gestion des utilisateurs</span>
+											<i class="menu-arrow"></i>
+										</a>
+										<div class="menu-submenu">
+											<i class="menu-arrow"></i>
+											<ul class="menu-subnav">
+												<li class="menu-item <?= $route == 'utilisateurs' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+													<a href="<?= Helper::getUrl('utilisateurs') ?>" class="menu-link">
+														<i class="menu-bullet menu-bullet-dot">
+															<span></span>
+														</i>
+														<span class="menu-text">Liste des utilisateurs</span>
+													</a>
+												</li>
+												<li class="menu-item <?= $route == 'utilisateur' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+													<a href="<?= Helper::getUrl('utilisateur') ?>" class="menu-link">
+														<i class="menu-bullet menu-bullet-dot">
+															<span></span>
+														</i>
+														<span class="menu-text">Ajouter un utilisateur</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="menu-item menu-item-submenu <?= strpos($route, 'categorie') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
+										<a href="javascript:;" class="menu-link menu-toggle">
+											<span class="svg-icon menu-icon"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											        <rect x="0" y="0" width="24" height="24"/>
+											        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+											        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+											        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+											        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+											        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+											        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+											        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+											        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
 											    </g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-text">Gestion des utilisateurs</span>
-										<i class="menu-arrow"></i>
-									</a>
-									<div class="menu-submenu">
-										<i class="menu-arrow"></i>
-										<ul class="menu-subnav">
-											<li class="menu-item <?= $route == 'utilisateurs' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-												<a href="<?= Helper::getUrl('utilisateurs') ?>" class="menu-link">
-													<i class="menu-bullet menu-bullet-dot">
-														<span></span>
-													</i>
-													<span class="menu-text">Liste des utilisateurs</span>
-												</a>
-											</li>
-											<li class="menu-item <?= $route == 'utilisateur' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-												<a href="<?= Helper::getUrl('utilisateur') ?>" class="menu-link">
-													<i class="menu-bullet menu-bullet-dot">
-														<span></span>
-													</i>
-													<span class="menu-text">Ajouter un utilisateur</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="menu-item menu-item-submenu <?= strpos($route, 'categorie') !== false ? 'menu-item-open menu-item-here' : '' ?>" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="javascript:;" class="menu-link menu-toggle">
-										<span class="svg-icon menu-icon"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-										    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-										        <rect x="0" y="0" width="24" height="24"/>
-										        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
-										        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
-										        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
-										        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
-										        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
-										        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
-										        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
-										        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
-										    </g>
-										</svg><!--end::Svg Icon--></span>
-										<span class="menu-text">Familles de produit</span>
-										<i class="menu-arrow"></i>
-									</a>
-									<div class="menu-submenu">
-										<i class="menu-arrow"></i>
-										<ul class="menu-subnav">
-											<li class="menu-item <?= $route == 'categories' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-												<a href="<?= Helper::getUrl('categories') ?>" class="menu-link">
-													<i class="menu-bullet menu-bullet-dot">
-														<span></span>
-													</i>
-													<span class="menu-text">Liste des familles</span>
-												</a>
-											</li>
-											<li class="menu-item <?= $route == 'categorie' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-												<a href="<?= Helper::getUrl('categorie') ?>" class="menu-link">
-													<i class="menu-bullet menu-bullet-dot">
-														<span></span>
-													</i>
-													<span class="menu-text">Ajouter une famille</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</li>
+											</svg><!--end::Svg Icon--></span>
+											<span class="menu-text">Familles de produit</span>
+											<i class="menu-arrow"></i>
+										</a>
+										<div class="menu-submenu">
+											<i class="menu-arrow"></i>
+											<ul class="menu-subnav">
+												<li class="menu-item <?= $route == 'categories' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+													<a href="<?= Helper::getUrl('categories') ?>" class="menu-link">
+														<i class="menu-bullet menu-bullet-dot">
+															<span></span>
+														</i>
+														<span class="menu-text">Liste des familles</span>
+													</a>
+												</li>
+												<li class="menu-item <?= $route == 'categorie' ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+													<a href="<?= Helper::getUrl('categorie') ?>" class="menu-link">
+														<i class="menu-bullet menu-bullet-dot">
+															<span></span>
+														</i>
+														<span class="menu-text">Ajouter une famille</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+								<?php } ?>
+								
 								<!--li class="menu-item <?= strpos($route, 'parametres') !== false ? 'menu-item-open menu-item-here' : '' ?>">
 									<a href="javascript:;" class="menu-link">
 										<span class="svg-icon menu-icon">
