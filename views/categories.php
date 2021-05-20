@@ -52,10 +52,7 @@ $title = 'Liste des familles de produit'; ?>
 											<td class="m-3 border-left-3">#<?= $currentCategory->id ?></td>
 											<td><a href="<?= Helper::getUrl('categorie', ['id' => $currentCategory->id]) ?>" class="font-weight-bolder"><?= $currentCategory->name ?></a></td>
 											<td data-order="<?= $currentCategory->created_at ?>"><?= strftime('%e %B %Y', $currentCategory->created_at) ?></td>
-											<td nowrap="nowrap" class="history-parent" data-id="<?= $currentCategory->id ?>" data-url="<?= Helper::getUrl('historiquecategorie') ?>">
-												<a href="javascript:void(0)" class="btn btn-sm btn-clean btn-icon kt_quick_panel_toggle" data-toggle="tooltip" data-theme="dark" title="Historique">
-													<i class="fas fa-user-clock"></i>
-												</a>
+											<td nowrap="nowrap">
 												<a href="<?= Helper::getUrl('categorie', ['id' => $currentCategory->id]) ?>" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" title="Éditer">
 													<i class="icon-xl la la-edit"></i>
 												</a>
